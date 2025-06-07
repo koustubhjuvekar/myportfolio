@@ -1279,19 +1279,26 @@ a:hover.back-to-top {
 }
 /* end of min-width 1200px */
 
+body {
+  background: #000; /* black bg for demo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
 .typing-container {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid #fff;
   width: max-content;
-  max-width: 24ch; /* max chars per line */
   animation: caret-blink 0.75s step-end infinite;
 }
 
-/* hide both lines initially */
 .line {
   display: block;
   overflow: hidden;
@@ -1299,41 +1306,36 @@ a:hover.back-to-top {
   width: 0;
 }
 
-/* First line types for first 40% of animation */
 .line1 {
-  animation: typing1 6s steps(18) infinite;
+  animation: typing1 6s steps(15) infinite;
 }
 
-/* Second line types after first line finishes */
 .line2 {
-  animation: typing2 6s steps(19) infinite;
+  animation: typing2 6s steps(22) infinite;
   animation-delay: 2.5s;
 }
 
-/* Typing first line from 0 to full width and back */
 @keyframes typing1 {
   0%, 40% {
-    width: 18ch;
+    width: 15ch;
   }
   45%, 100% {
     width: 0;
   }
 }
 
-/* Typing second line delayed, from 0 to full and back */
 @keyframes typing2 {
   0%, 40% {
     width: 0;
   }
   45%, 85% {
-    width: 19ch;
+    width: 22ch;
   }
   90%, 100% {
     width: 0;
   }
 }
 
-/* blinking caret */
 @keyframes caret-blink {
   0%, 50%, 100% {
     border-color: #fff;
@@ -1342,4 +1344,3 @@ a:hover.back-to-top {
     border-color: transparent;
   }
 }
-
