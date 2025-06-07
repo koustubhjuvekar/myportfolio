@@ -1283,14 +1283,14 @@ a:hover.back-to-top {
   font-family: 'Courier New', Courier, monospace;
   font-size: 3rem;
   color: #fff;
-  white-space: normal; /* allow wrapping */
+ /* white-space: normal; /* allow wrapping */
   overflow: hidden;
   display: inline-block;
   border-right: 0.15em solid #fff;
   box-sizing: border-box;
-  max-width: 100%; /* don't overflow */
+  max-width: 70%; /* don't overflow */
   min-height: 3.6em; /* reserve height to prevent flicker when blank */
-  animation: typing 5s steps(40, end), blink-caret 0.75s step-end infinite, fadeLoop 8s infinite;
+  animation: typing 9s steps(40, end), blink-caret 0.75s step-end infinite, fadeLoop 8s infinite;
 }
 
 @keyframes typing {
