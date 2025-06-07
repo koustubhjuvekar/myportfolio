@@ -1282,6 +1282,10 @@ a:hover.back-to-top {
 .typing-wrapper {
     display: inline-block; /* Keeps everything contained */
     position: relative; 
+    display: flex; /* Keeps elements stable */
+    justify-content: center;
+    align-items: center;
+    width: fit-content; /* Prevents background expansion */
 }
 
 .typing-container {
