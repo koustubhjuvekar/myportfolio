@@ -1279,14 +1279,7 @@ a:hover.back-to-top {
 }
 /* end of min-width 1200px */
 
-body {
-  background: #000; /* black bg for demo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+
 
 .typing-container {
   font-family: 'Courier New', Courier, monospace;
