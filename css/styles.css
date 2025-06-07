@@ -1305,21 +1305,23 @@ a:hover.back-to-top {
     animation: typing 4s steps(50, end) infinite, blink 0.10s infinite;
 } */
 .typing-container {
-    display: inline-block;
+	display: inline-block;
+	height: 50px; /* Adjust as needed */
+	min-height: 70px;
     overflow: hidden;
     white-space: nowrap;
     color: white;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     border-right: 2px solid white; /* Blinking cursor */
     width: 0;
-    animation: typing 4s steps(50, end) infinite, blink 0.6s infinite;
+    animation: typing 7s steps(50, end) infinite, blink 0.6s infinite;
 }
 
 
 @keyframes typing {
     0% { width: 0; }
-    50% { width: 100%; } /* Prints halfway */
+    50% { width: 500%; } /* Prints halfway */
     100% { width: 100%; } /* Prints full */
 }
 
