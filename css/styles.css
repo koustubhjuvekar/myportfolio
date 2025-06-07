@@ -1281,41 +1281,24 @@ a:hover.back-to-top {
 
 .typing-container {
     position: relative;
-    white-space: nowrap;
     overflow: hidden;
-    color: white; /* Make the text white */
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    display: inline-block;
+    white-space: pre-wrap; /* Ensures line breaks */
+    word-break: break-word; /* Allows wrapping */
     border-right: 2px solid white; /* Blinking cursor */
     width: 0;
-    animation: typing-half 1s steps(10, end) forwards,
-               typing-full 1s steps(20, end) 1s forwards,
-               clear-text 0.5s 2s forwards,
-               repeat-animation 0s 2.5s forwards;
+    animation: typing 3s steps(20, end) infinite, blink 0.6s infinite;
 }
 
-@keyframes typing-half {
-    from { width: 0; }
-    to { width: 50%; } /* Print half */
-}
-
-@keyframes typing-full {
-    from { width: 50%; }
-    to { width: 100%; } /* Print full */
-}
-
-@keyframes clear-text {
-    from { opacity: 1; }
-    to { opacity: 0; } /* Text disappears */
-}
-
-@keyframes repeat-animation {
-    from { width: 0; opacity: 1; }
-    to { width: 0; opacity: 1; } /* Reset for repeat */
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 50%; } /* Prints halfway */
+    100% { width: 100%; } /* Prints full */
 }
 
 @keyframes blink {
     50% { border-color: transparent; }
 }
-
-
-
-
