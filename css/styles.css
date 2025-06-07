@@ -1285,6 +1285,10 @@ a:hover.back-to-top {
 }
 
 .typing-container {
+    display: inline-block; /* Allows height adjustment */
+    /*height: 80px; /* Adjust as needed */
+    min-height: 50px;
+    line-height: 50px; /* Centers text vertically */
     display: inline-block;
     overflow: hidden;
     white-space: pre-wrap; /* Allows wrapping */
@@ -1307,9 +1311,3 @@ a:hover.back-to-top {
 @keyframes blink {
     50% { border-color: transparent; }
 }
-
-
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
