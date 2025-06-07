@@ -1288,21 +1288,32 @@ a:hover.back-to-top {
     width: fit-content; /* Prevents background expansion */
 }
 
-.typing-container {
+/*.typing-container {
     display: inline-block; /* Allows height adjustment */
     /*height: 80px; /* Adjust as needed */
-    min-height: 120px;
+/*    min-height: 120px;
     line-height: 50px; /* Centers text vertically */
-    display: inline-block;
+/*    display: inline-block;
     overflow: hidden;
     white-space: pre-wrap; /* Allows wrapping */
-    word-break: break-word; /* Ensures long text breaks properly */
-    color: white;
+/*    word-break: break-word; /* Ensures long text breaks properly */
+/*    color: white;
     font-size: 3em;
     font-weight: bold;
     border-right: 2px solid orange; /* Blinking cursor */
-    width: 0;
+/*    width: 0;
     animation: typing 4s steps(50, end) infinite, blink 0.10s infinite;
+} */
+.typing-container {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    border-right: 2px solid white; /* Blinking cursor */
+    width: 0;
+    animation: typing 4s steps(50, end) infinite, blink 0.6s infinite;
 }
 
 
