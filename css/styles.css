@@ -1279,10 +1279,15 @@ a:hover.back-to-top {
 }
 /* end of min-width 1200px */
 
+.typing-wrapper {
+    display: inline-block; /* Keeps everything contained */
+    position: relative; 
+}
+
 .typing-container {
-    display: inline-block; /* Ensures it stays in place */
+    display: inline-block; 
     overflow: hidden;
-    word-break: break-word;
+    white-space: nowrap;
     color: white;
     font-size: 3em;
     font-weight: bold;
@@ -1293,9 +1298,14 @@ a:hover.back-to-top {
 
 @keyframes typing {
     0% { width: 0; }
-    50% { width: 50%; } /* Prints halfway */
+    50% { width: 100%; } /* Prints halfway */
     100% { width: 100%; } /* Prints full */
 }
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 
 @keyframes blink {
     50% { border-color: transparent; }
