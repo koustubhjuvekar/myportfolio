@@ -1283,19 +1283,39 @@ a:hover.back-to-top {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 2px solid black; /* Blinking cursor */
+    color: white; /* Make the text white */
+    border-right: 2px solid white; /* Blinking cursor */
     width: 0;
-    animation: typing 2s steps(20, end) forwards, blink 0.6s infinite;
+    animation: typing-half 1s steps(10, end) forwards,
+               typing-full 1s steps(20, end) 1s forwards,
+               clear-text 0.5s 2s forwards,
+               repeat-animation 0s 2.5s forwards;
 }
 
-@keyframes typing {
+@keyframes typing-half {
     from { width: 0; }
-    to { width: 100%; }
+    to { width: 50%; } /* Print half */
+}
+
+@keyframes typing-full {
+    from { width: 50%; }
+    to { width: 100%; } /* Print full */
+}
+
+@keyframes clear-text {
+    from { opacity: 1; }
+    to { opacity: 0; } /* Text disappears */
+}
+
+@keyframes repeat-animation {
+    from { width: 0; opacity: 1; }
+    to { width: 0; opacity: 1; } /* Reset for repeat */
 }
 
 @keyframes blink {
     50% { border-color: transparent; }
 }
+
 
 
 
