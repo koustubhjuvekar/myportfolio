@@ -1282,7 +1282,7 @@ a:hover.back-to-top {
 .typing-container {
     display: inline-block; /* Ensures it stays in place */
     overflow: hidden;
-    white-space: nowrap;
+    word-break: break-word;
     color: white;
     font-size: 3em;
     font-weight: bold;
@@ -1293,7 +1293,7 @@ a:hover.back-to-top {
 
 @keyframes typing {
     0% { width: 0; }
-    50% { width: 50%; } /* Prints halfway */
+    50% { width: 100%; } /* Prints halfway */
     100% { width: 100%; } /* Prints full */
 }
 
