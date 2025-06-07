@@ -1287,8 +1287,8 @@ a:hover.back-to-top {
 .typing-container {
     display: inline-block; /* Allows height adjustment */
     /*height: 80px; /* Adjust as needed */
-    min-height: 80px;
-    line-height: 80px; /* Centers text vertically */
+    min-height: 90px;
+    line-height: 50px; /* Centers text vertically */
     display: inline-block;
     overflow: hidden;
     white-space: pre-wrap; /* Allows wrapping */
