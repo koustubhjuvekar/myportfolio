@@ -1287,8 +1287,8 @@ a:hover.back-to-top {
 .typing-container {
     display: inline-block; /* Allows height adjustment */
     /*height: 80px; /* Adjust as needed */
-    min-height: 50px;
-    line-height: 50px; /* Centers text vertically */
+    min-height: 80px;
+    line-height: 80px; /* Centers text vertically */
     display: inline-block;
     overflow: hidden;
     white-space: pre-wrap; /* Allows wrapping */
@@ -1296,9 +1296,9 @@ a:hover.back-to-top {
     color: white;
     font-size: 3em;
     font-weight: bold;
-    border-right: 2px solid white; /* Blinking cursor */
+    border-right: 2px solid orange; /* Blinking cursor */
     width: 0;
-    animation: typing 4s steps(50, end) infinite, blink 0.6s infinite;
+    animation: typing 4s steps(50, end) infinite, blink 0.10s infinite;
 }
 
 
