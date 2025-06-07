@@ -1283,7 +1283,7 @@ a:hover.back-to-top {
   font-family: 'Courier New', Courier, monospace;
   font-size: 3rem;
   color: #fff;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: hidden;
   border-right: 0.15em solid #fff;
   animation: typing 6s steps(50, end) 1s infinite, blink-caret 0.75s step-end infinite;
