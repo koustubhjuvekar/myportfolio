@@ -1280,14 +1280,12 @@ a:hover.back-to-top {
 /* end of min-width 1200px */
 
 .typing-container {
-    position: relative;
+    display: inline-block; /* Ensures it stays in place */
     overflow: hidden;
+    white-space: nowrap;
     color: white;
     font-size: 2em;
     font-weight: bold;
-    display: inline-block;
-    white-space: pre-wrap; /* Ensures line breaks */
-    word-break: break-word; /* Allows wrapping */
     border-right: 2px solid white; /* Blinking cursor */
     width: 0;
     animation: typing 3s steps(20, end) infinite, blink 0.6s infinite;
@@ -1302,3 +1300,4 @@ a:hover.back-to-top {
 @keyframes blink {
     50% { border-color: transparent; }
 }
+
