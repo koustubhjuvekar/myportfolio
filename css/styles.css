@@ -1283,20 +1283,28 @@ a:hover.back-to-top {
   font-family: 'Courier New', Courier, monospace;
   font-size: 3rem;
   color: #fff;
-  white-space: pre-wrap;
-  overflow: hidden;
-  border-right: 0.15em solid #fff;
-  animation: typing 6s steps(50, end) 1s infinite, blink-caret 0.75s step-end infinite;
+  white-space: normal; /* allow wrap */
+  overflow: hidden; /* hide the overflow */
+  border-right: 0.15em solid #fff; /* caret */
+  width: 24ch; /* width of text to reveal */
+  animation: typing 6s steps(24) infinite, blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-  0% { width: 0; }
-  50% { width: 100%; }
-  75% { width: 100%; }
-  100% { width: 0; }
+  0%, 50% {
+    width: 0;
+  }
+  50.01%, 100% {
+    width: 24ch;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #fff; }
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
 }
+
