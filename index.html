@@ -72,6 +72,7 @@
                     </li>
                 </ul>
                 <span class="nav-item social-icons">
+
 			<span class="fa-stack">
 			    <a href="https://www.instagram.com/koustubh18900" target="_blank"> 
 			        <i class="fas fa-circle fa-stack-2x"></i>
@@ -113,15 +114,75 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                	<h1 class="h1-large">I am AWS Cloud and Devops Engineer!</h1> 
+                     	<h1 class="h1-large">I am AWS Cloud and DevOps Engineer!</h1> 
+			 
                         <a class="btn-solid-lg page-scroll" href="#about">Hire me</a>
-                        <a class="btn-outline-lg page-scroll" href="javascript:void(0);" onclick="showContact()"><i class="fas fa-user"></i> Contact Me</a>
-		<!--	<a class="btn-outline-lg page-scroll" href="#contact"><i class="fas fa-user"></i>Contact Me</a> -->
+                        <a class="btn-outline-lg" href="javascript:void(0);" onclick="showContact()"><i class="fas fa-user"></i> Contact Me</a>
+
+                        <!-- The modal (hidden by default) -->
+                        <div id="contactModal" style="
+                            display: none; 
+                            position: fixed; 
+                            top: 50%; 
+                            left: 50%; 
+                            transform: translate(-50%, -50%);
+                            background: whitesmoke; 
+                            padding: 20px; 
+                            border-radius: 30px; 
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+                            z-index: 9999;
+                            text-align: left;
+                            padding-left: 100px;
+                            width: 500px;
+                        ">
+                            <h3 style="line-height: 1.8">Contact Info</h3>
+                            <p> <b>Email:</b> koustubhjuvekarofficial@gmail.com</p>
+
+                            <a href="tel:+917588371155" style="text-decoration:none; color:#222;">
+                            <b>Mobile:</b> +91 7588 371155 <br>
+                            </a>
+
+
+                            <p><br><b>LinkedIn:</b> <a href="https://linkedin.com/in/koustubhjuvekar" target="_blank">linkedin.com/in/koustubhjuvekar</a></p>
+
+
+                            <!-- QR Code image -->
+                             <i style="font-family: 'open sans'; font-size: 12px; margin-bottom: 10px;">(<b>Scan</b> the QR code or <b>click on</b> the QR code to connect with me on WhatsApp)<br></i>
+
+                            <a href="https://wa.me/qr/PS2HL4YKMLYHI1" target="_blank">
+                                <img src="images/whatsapp-qr.png"  alt="QR Code" style="width:120px; height:120px; margin: 5px 0px; margin-bottom: 20px;">
+                                <br>
+                            </a> 
+
+                            <button onclick="hideContact()" style="
+                                padding: 8px 16px; 
+                                border: none; 
+                                background-color: #24262a; 
+                                color: white; 
+                                border-radius: 5px; 
+                                cursor: pointer;
+                            ">Close</button>
+                        </div>
+
+		                                                                              <!--	<a class="btn-outline-lg page-scroll" href="#contact"><i class="fas fa-user"></i>Contact Me</a> -->
 			<script>
-				function showContact() {
-  				alert("	📧 Email: koustubhjuvekarofficial@gmail.com\n\n	📱 Phone: +91-7588371155\n\n	🔗 LinkedIn: linkedin.com/in/koustubhjuvekar");
-			}
+                                                                        				//function showContact() 
+                                                                          				//alert("	📧 Email: koustubhjuvekarofficial@gmail.com\n\n	📱 Phone: +91-7588371155\n\n	🔗 LinkedIn: linkedin.com/in/koustubhjuvekar"); 
+                
+                function showContact() {
+                    // Show the modal
+                    document.getElementById('contactModal').style.display = 'block';
+                }
+
+			
 			</script>
+
+            <script>
+                function hideContact() {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+
+            </script>
 
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
@@ -174,7 +235,7 @@
 		<div class="col-lg-4">
 		    <div class="text-box">
 		        <h4>
-		            <img src="images/aws-icon.png" alt="AWS Cloud" style="width: 150px; height: 80px;">
+		            <img src="images/aws-icon" alt="AWS Cloud" style="width: 80px; height: 80px;">
 		        </h4>
 		        <h4>AWS Cloud</h4>
 		        <p>As a fresher passionate about cloud technologies, I have recently completed training in AWS Cloud Computing and am keen to support companies with cloud adoption and optimization.</p>
@@ -184,7 +245,7 @@
               <div class="col-lg-4">
    		 <div class="text-box">
      		   <h4>
-            		<img src="images/devops.png" alt="DevOps" style="width: 150px; height: 80px;">
+            		<img src="images/devops.png" alt="DevOps" style="width: 80px; height: 80px;">
        		   </h4>
       		  <h4>DevOps</h4>
         		<p>Recently trained in DevOps methodologies, I aim to contribute to organizations by optimizing software delivery, automating deployments, and improving operational efficiency.</p>
@@ -194,7 +255,7 @@
  		<div class="col-lg-4">
    			 <div class="text-box">
      		  	 <h4>
-            			<img src="images/dev.png" alt="Development" style="width: 120px; height: 120px;">
+            			<img src="images/dev.png" alt="Development" style="width: 80px; height: 80px;">
        		  	 </h4>
                         <h4>Development</h4></h4>
                         <p>I have learned HTML, CSS, JavaScript for front-end development, and Python with MySQL for back-end and database handling.</p>
@@ -205,7 +266,54 @@
     </div> <!-- end of basic-2 -->
     <!-- end of services -->
    <!-- Copyright -->
-    <div class="copyright bg-gray">
+
+    <div id="contact" class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 style="line-height: 1.7;">CONTACT<br></h3>
+                    <h6 style="line-height: 2.0;">
+                        Email: koustubhjuvekarofficial@gmail.com<br>
+                        Mobile/Whatsapp: 
+
+                        <a href="tel:+917588371155" style="text-decoration:none; color:#222; font-weight:bold;">
+                            +91 7588 371155
+                        </a>
+                        <a href="https://wa.me/qr/PS2HL4YKMLYHI1" target="_blank" style="margin-left:10px;">
+                            <img src="images/whatsapp.png" alt="WhatsApp" style="width:20px; height:20px; vertical-align:middle;">
+                        </a><br>
+
+
+                        <img src="images/whatsapp-qr.png" alt="WhatsApp QR Code" style="width:60px; height:60px; vertical-align:middle; margin-top: 10px; margin-bottom: 10px;"><br>
+                       
+                        <i style="font-family: 'Lato'; font-size: 13px;" >(Scan the QR code or click the WhatsApp icon to connect with me on WhatsApp)</i> <br>
+                        Location: Pune, India.<br>
+                        <div style="text-align: center; margin-top: 5px; margin-bottom: 10px;">
+                            <a href="https://www.instagram.com/koustubh18900" target="_blank"> 
+                                <img src="images/insta.png" alt="instagram" style="width: 40px; height: 40px; margin: 7px;">
+                            </a>
+
+                            <a href="https://www.facebook.com/koustubhjuvekar" target="_blank"> 
+                                <img src="images/fb.png" alt="facebook" style="width: 34px; height: 34px; margin: 7px;">
+                            </a>
+                                           
+                            <a href="https://github.com/koustubhjuvekar" target="_blank"> 
+                                <img src="images/git.png" alt="github" style="width: 40px; height: 40px; margin: 7px;">
+                            </a>
+                                   
+                            <a href="https://twitter.com/itsKoustubhJ" target="_blank"> 
+                                <img src="images/x.png" alt="x" style="width: 34px; height: 34px; margin: 7px; margin-bottom: 1px;">
+                            </a>
+                        </div>
+
+                    </h6>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div>
+
+    
+     <div class="copyright bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -216,7 +324,6 @@
         
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
-    
     	
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
