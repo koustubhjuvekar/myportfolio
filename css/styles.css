@@ -116,7 +116,7 @@ h6 {
 	margin-bottom: 0.5rem;
 }
 
-a {
+/*a {
 	color: #4d5055;
 	text-decoration: underline;
 }
@@ -124,7 +124,7 @@ a {
 a:hover {
 	color: #4d5055;
 	text-decoration: underline;
-}
+}*/
 
 .no-line {
 	text-decoration: none;
@@ -1279,3 +1279,22 @@ a:hover.back-to-top {
 	/* end of extra pages */
 }
 /* end of min-width 1200px */
+
+
+    #contact {
+        padding: 40px 0px;
+        min-height: 20px;
+        text-align: center;
+        background-color: #ecf7f9; /* optional: light background */
+    }
+
+
+
+    #contact h3 {
+    font-family: 'Lato';
+    font-size: 40px;
+    font-weight: bold;
+    color: #000000	;
+/*    letter-spacing: 1px;*/
+}
+
