@@ -1230,7 +1230,7 @@ a:hover.back-to-top {
 
 	/* General Styles */
 	.h1-large {
-		font-size: 3.75rem;
+		font-size: 3.5rem;
 		line-height: 4.625rem;
 	}
 	/* end of general styles */
@@ -1356,4 +1356,21 @@ a:hover.back-to-top {
 
 .overlay.active {
     display: block;
+}
+
+#resume-button {
+  animation: blinker 1s linear infinite;
+  background: linear-gradient(to right, #0033cc, #cc0000); /* Blue to Red */
+  color: white;
+  padding: 20px 20px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
