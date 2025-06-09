@@ -1298,3 +1298,38 @@ a:hover.back-to-top {
 /*    letter-spacing: 1px;*/
 }
 
+
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* faint background */
+    display: none;
+    z-index: 999;
+}
+
+/* Popup style */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: ghostwhite;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+}
+
+/* Show popup and overlay when active */
+.popup.active {
+    display: block;
+}
+
+.overlay.active {
+    display: block;
+}
