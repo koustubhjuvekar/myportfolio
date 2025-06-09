@@ -547,11 +547,11 @@ input[type='checkbox'] {
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: left;
-	height: 400px; /* Add this line to control height */
+	height: 700px; /* Add this line to control height */
 }
 
 .header .h1-large {
-	margin-bottom: 9.75rem;
+	margin-bottom: 8.75rem;
 	color: #ffffff;
 }
 
@@ -587,7 +587,7 @@ input[type='checkbox'] {
 }
 
 .basic-1 .text-container {
-	margin-bottom: 2rem;
+	margin-bottom: 3rem;
 }
 
 .basic-1 .time {
@@ -1155,7 +1155,7 @@ a:hover.back-to-top {
 
 	.split .text-container {
 		width: 400px;
-		margin-left: 3rem;
+		margin-left: 4rem;
 	}
 	/* end of details */
 
