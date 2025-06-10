@@ -75,4 +75,13 @@
 		$(this).blur();
 	});
 
+    
+    /* Typing animation*/
+    var typed = new Typed('#typed', {
+        strings: ["I am AWS Cloud and DevOps Engineer!"],
+        typeSpeed: 50,
+        backSpeed: 25,
+        loop: true
+    });
+
 })(jQuery);
