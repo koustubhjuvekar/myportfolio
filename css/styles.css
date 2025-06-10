@@ -1310,45 +1310,45 @@ a:hover.back-to-top {
 
     /* Header adjustments for mobile */
     .header {
-        height: 400px; /* make image visible */
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        height: 450px; /* slightly taller */
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         background-size: cover;
         background-position: center;
-        background-attachment: scroll; /* safe for mobile */
+        background-attachment: scroll;
         display: flex;
-        align-items: center; /* vertically center text */
+        align-items: center;
     }
 
-    /* Make heading smaller and readable */
+    /* Text container */
+    .header .text-container {
+        text-align: center;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    /* Heading */
     .header .h1-large {
         font-size: 22px;
         line-height: 30px;
-        text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 20px; /* more space below heading */
     }
 
-    /* Center text container */
-    .header .text-container {
-        padding-top: 0;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Buttons spacing */
+    /* Buttons */
     .header .btn-solid-lg,
     .header .btn-outline-lg,
     .header .btn-resume-open {
         display: inline-block;
-        margin: 10px 5px;
+        margin: 8px 6px; /* even spacing between buttons */
     }
 
-    /* Optional: fix contact button on mobile */
+    /* Optional: fix contact button size on mobile */
     .header .btn-outline-lg {
         padding: 0.8rem 1.5rem;
         font-size: 0.85rem;
     }
 }
+
 
 
 
