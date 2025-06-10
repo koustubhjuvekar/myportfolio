@@ -542,13 +542,43 @@ input[type='checkbox'] {
 /*     Header     */
 /******************/
 .header {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/header-background.jpg') center center no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    text-align: left;
+    height: 700px; /* Add this! */
+}
+
+/*.header {
 	padding-top: 7rem;
 	padding-bottom: 5.5rem;
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: left;
-	/*height: 700px; /* Add this line to control height */
+	height: 700px; /* Add this line to control height
+}*/
+
+@media (max-width: 768px) {
+    .header {
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll; /* important for mobile */
+        height: 400px; /* or adjust height */
+    }
+
+    .h1-large {
+        font-size: 24px;  /* smaller font size on mobile */
+        line-height: 32px;
+    }
+
+    .text-container {
+        padding-top: 50px; /* add space at top */
+    }
 }
+
 
 .header .h1-large {
 	margin-bottom: 10rem;
