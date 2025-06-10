@@ -25,6 +25,8 @@
     <title>Koustubh's Porfolio</title>
     
     <!-- Styles -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -80,7 +82,7 @@
                 </ul>
                 <span class="nav-item social-icons">
 
-    <!--        <span class="fa-stack">
+    <!--    <span class="fa-stack">
                 <a href="https://www.instagram.com/koustubh18900" target="_blank"> 
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fab fa-instagram fa-stack-1x"></i>
@@ -121,81 +123,29 @@
             <div class="col-lg-6">
 
                 <!-- Heading Container -->
-                <div class="heading-container"  style="margin-bottom: 280px;">
-                    <h1 class="h1-large" style="font-family: 'Merriweather', serif; font-size: 40px;">
+                <!--<div class="heading-container"  style="margin-bottom: 220px;">
+                    <h1 class="h1-large typewriter" style="font-family: 'Merriweather', serif; font-size: 40px;"><br>
                         I am AWS Cloud and DevOps Engineer!
                     </h1>
-                </div>
+                </div> -->
+
+<!-- AWS head typing -->
+                <h1 class="h1-large" style="margin-top: 100px; font-family: 'Open Sans', serif; font-size: 40px;">
+                     <span id="typed"></span>
+                </h1>
 
                 <!-- Buttons Container -->
-                <div class="buttons-container" style="margin-top: -250px;">
+                <div class="buttons-container" style="margin-top: -210px;">
                     <a class="btn-solid-lg page-scroll" href="#about" style="margin-right: 10px;">Hire me</a>
 
-                    <!-- Contact Me Button -->
-                    <a class="btn-outline-lg" href="javascript:void(0);" onclick="showPopup()">
-                        <i class="fas fa-user"></i> Contact Me
-                    </a><br>
+                <!-- Contact Me Button -->
+                    <a class="btn-outline-lg page-scroll" href="#contact"><i class="fas fa-user"></i> Contact Me</a>
 
+                <!-- See my resume -->
                     <a id="resume-button" class="btn-resume-open" href="resume.pdf" target="_blank" 
                        style="color: white; margin-top: 30px; text-align: center;">
                        See My Resume
                     </a>
-                </div>
-
-                <!-- Overlay -->
-                <div id="overlay" class="overlay" onclick="closePopup()"></div>
-
-                <!-- Popup -->
-                <div id="contactPopup" class="popup">
-                    <h2 style="line-height: 70px;">Contact Me</h2>
-                    <p style="text-decoration:none; color: black;">
-                        <b>Email:</b> koustubhjuvekarofficial@gmail.com
-                    </p>
-
-                    <p style="text-decoration:none; color: black;">
-                        <b>Mobile: </b>
-                        <a href="tel:+917588371155" style="text-decoration:none; color: black;"> +91 7588 371155</a>
-                    </p>
-
-                    <p style="color: black;">
-                        <b>LinkedIn:</b> 
-                        <a href="https://linkedin.com/in/koustubhjuvekar" target="_blank">
-                            linkedin.com/in/koustubhjuvekar
-                        </a>
-                    </p>
-
-                    <p><i>(Scan the QR code or click on the QR code to connect with me on WhatsApp)</i></p>
-
-                    <a href="https://wa.me/qr/PS2HL4YKMLYHI1" target="_blank">
-                        <img src="images/whatsapp-qr.png" alt="QR Code" 
-                             style="width:120px; height:120px; margin: 5px 0px; margin-bottom: 20px;">
-                        <br>
-                    </a> 
-
-                    <button onclick="closePopup()" style="
-                            padding: 8px 16px; 
-                            border: none; 
-                            background-color: blue; 
-                            color: white; 
-                            border-radius: 5px; 
-                            cursor: pointer;">
-                        Close
-                    </button>
-                </div>
-
-                <!-- JS -->
-                <script>
-                    function showPopup() {
-                        document.getElementById('overlay').classList.add('active');
-                        document.getElementById('contactPopup').classList.add('active');
-                    }
-
-                    function closePopup() {
-                        document.getElementById('overlay').classList.remove('active');
-                        document.getElementById('contactPopup').classList.remove('active');
-                    }
-                </script>
-
             </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
