@@ -78,10 +78,16 @@
     
     /* Typing animation*/
     var typed = new Typed('#typed', {
-        strings: ["I am AWS Cloud and DevOps Engineer!"],
+        strings: [
+            `I am <span style="color: orange; ">AWS Cloud</span> and <span style="color: blue;">DevOps</span> Engineer!`
+        ],
         typeSpeed: 50,
         backSpeed: 25,
-        loop: true
+        loop: true,
+        smartBackspace: true,
+        showCursor: true,
+        html: true
     });
+
 
 })(jQuery);
