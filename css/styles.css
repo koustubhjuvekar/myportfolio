@@ -547,7 +547,6 @@ input[type='checkbox'] {
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: left;
-	height: 300px; /* ab height fix hai */
     display: flex;
     align-items: center;
 	height: 500px; /* Add this line to control height*/
@@ -556,7 +555,7 @@ input[type='checkbox'] {
 .header .h1-large {
 	font-size: 40px; /* chhota font */
     line-height: 60px; /* line height */
-	margin-bottom: 5rem;
+	margin-bottom: 15rem;
 	color: #ffffff;
 }
 
@@ -1426,4 +1425,21 @@ a:hover.back-to-top {
   50% {
     opacity: 0;
   }
+}
+
+
+/* Header heading container */
+.heading-container {
+    margin-top: 50px; /* Adjust this as per your choice */
+    text-align: left; /* or center, if you want */
+}
+
+/* Header buttons container */
+.buttons-container {
+    margin-top: 20px; /* Adjust space between heading and buttons */
+}
+
+.buttons-container a {
+    margin: 5px 8px 5px 0; /* Space between buttons */
+    display: inline-block;
 }
