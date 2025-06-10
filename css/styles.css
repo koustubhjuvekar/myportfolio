@@ -448,11 +448,11 @@ input[type='checkbox'] {
 }
 
 .navbar .nav-item .nav-link {
-	padding-top: 0.625rem;
-	padding-bottom: 0.625rem;
+	padding-top: 1.625rem;
+	padding-bottom: .625rem;
 	color: #ffffff;
 	text-decoration: none;
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 }
 
 .navbar .nav-item.dropdown.show .nav-link,
@@ -1443,3 +1443,5 @@ a:hover.back-to-top {
     margin: 5px 8px 5px 0; /* Space between buttons */
     display: inline-block;
 }
+
+
