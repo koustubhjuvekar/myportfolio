@@ -542,16 +542,21 @@ input[type='checkbox'] {
 /*     Header     */
 /******************/
 .header {
-	padding-top: 7rem;
-	padding-bottom: 5.5rem;
+	padding-top: 3rem; /* kam kar diya */
+    padding-bottom: 2rem; /* kam kar diya */
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: left;
-	/*height: 700px; /* Add this line to control height*/
+	height: 250px; /* ab height fix hai */
+    display: flex;
+    align-items: center;
+	height: 500px; /* Add this line to control height*/
 }
 
 .header .h1-large {
-	margin-bottom: 10rem;
+	font-size: 40px; /* chhota font */
+    line-height: 60px; /* line height */
+	margin-bottom: 5rem;
 	color: #ffffff;
 }
 
@@ -1306,12 +1311,13 @@ a:hover.back-to-top {
 
 /* new added mobile size */
 /* Mobile fix: max-width 767px */
+/*
 @media (max-width: 767px) {
 
     /* Header adjustments for mobile */
-    .header {
+ /*   .header {
         height: 450px; /* slightly taller */
-        padding-top: 1rem;
+   /*     padding-top: 1rem;
         padding-bottom: 1rem;
         background-size: cover;
         background-position: center;
@@ -1321,33 +1327,33 @@ a:hover.back-to-top {
     }
 
     /* Text container */
-    .header .text-container {
+    /*.header .text-container {
         text-align: center;
         width: 100%;
         padding: 0 15px;
     }
 
     /* Heading */
-    .header .h1-large {
+    /*.header .h1-large {
         font-size: 22px;
         line-height: 30px;
         margin-bottom: 20px; /* more space below heading */
-    }
+    /*}
 
     /* Buttons */
-    .header .btn-solid-lg,
+    /*.header .btn-solid-lg,
     .header .btn-outline-lg,
     .header .btn-resume-open {
         display: inline-block;
         margin: 8px 6px; /* even spacing between buttons */
-    }
+    /*}
 
     /* Optional: fix contact button size on mobile */
-    .header .btn-outline-lg {
+    /*.header .btn-outline-lg {
         padding: 0.8rem 1.5rem;
         font-size: 0.85rem;
     }
-}
+}*/
 
 
 
