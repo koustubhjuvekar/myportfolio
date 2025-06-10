@@ -542,12 +542,12 @@ input[type='checkbox'] {
 /*     Header     */
 /******************/
 .header {
-	padding-top: 3rem; /* kam kar diya */
-    padding-bottom: 2rem; /* kam kar diya */
+	padding-top: 7rem; /* kam kar diya */
+    padding-bottom: 5rem; /* kam kar diya */
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/header-background.jpg') center center no-repeat;
 	background-size: cover;
 	text-align: left;
-	height: 250px; /* ab height fix hai */
+	height: 300px; /* ab height fix hai */
     display: flex;
     align-items: center;
 	height: 500px; /* Add this line to control height*/
