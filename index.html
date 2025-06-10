@@ -114,75 +114,93 @@
     </nav> <!-- end of navbar -->
     <!-- end of navigation -->
 
+<!-- Header -->
+<header id="header" class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
 
-    <!-- Header -->
-    <header id="header" class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h1 class="h1-large" style="height: 100px; font-family: 'Merriweather', serif;">I am AWS Cloud and DevOps Engineer!</h1> 
-             
-                        <a class="btn-solid-lg page-scroll" href="#about" style="margin-right: 10px;">Hire me</a>
+                <!-- Heading Container -->
+                <div class="heading-container"  style="margin-bottom: 280px;">
+                    <h1 class="h1-large" style="font-family: 'Merriweather', serif;">
+                        I am AWS Cloud and DevOps Engineer!
+                    </h1>
+                </div>
 
-                    <!-- Overlay -->
-                    <div id="overlay" class="overlay" onclick="closePopup()"></div>
-
-                    <!-- Popup -->
-                    <div id="contactPopup" class="popup">
-                        <h2 style="line-height: 70px;">Contact Me</h2>
-                        <p style="text-decoration:none; color: black;"><b>Email:</b> koustubhjuvekarofficial@gmail.com</p>
-
-                        <p style="text-decoration:none; color: black;"><b>Mobile: </b>
-                        <a href="tel:+917588371155" style="text-decoration:none; color: black;"> +91 7588 371155</a>
-
-                        <p style="color: black;"><b>LinkedIn:</b> <a href="https://linkedin.com/in/koustubhjuvekar" target="_blank">linkedin.com/in/koustubhjuvekar</a></p>
-
-                        <p><i>(Scan the QR code or click on the QR code to connect with me on WhatsApp)</i></p>
-                       
-                        <a href="https://wa.me/qr/PS2HL4YKMLYHI1" target="_blank">
-                                <img src="images/whatsapp-qr.png"  alt="QR Code" style="width:120px; height:120px; margin: 5px 0px; margin-bottom: 20px;">
-                                <br>
-                        </a> 
-
-                        <button onclick="closePopup()" style="
-                                padding: 8px 16px; 
-                                border: none; 
-                                background-color: blue; 
-                                color: white; 
-                                border-radius: 5px; 
-                                cursor: pointer;
-                            ">Close</button>
-                    </div>
+                <!-- Buttons Container -->
+                <div class="buttons-container" style="margin-top: -250px;">
+                    <a class="btn-solid-lg page-scroll" href="#about" style="margin-right: 10px;">Hire me</a>
 
                     <!-- Contact Me Button -->
-                    <a class="btn-outline-lg" href="javascript:void(0);" onclick="showPopup()"><i class="fas fa-user"></i> Contact Me</a><br>
+                    <a class="btn-outline-lg" href="javascript:void(0);" onclick="showPopup()">
+                        <i class="fas fa-user"></i> Contact Me
+                    </a><br>
 
+                    <a id="resume-button" class="btn-resume-open" href="resume.pdf" target="_blank" 
+                       style="color: white; margin-top: 30px; text-align: center;">
+                       See My Resume
+                    </a>
+                </div>
 
+                <!-- Overlay -->
+                <div id="overlay" class="overlay" onclick="closePopup()"></div>
 
-                    <a id="resume-button" class="btn-resume-open" href="resume.pdf" target="_blank" style="color: white; margin-top: 30px; text-align: center;"> See My Resume</a>
+                <!-- Popup -->
+                <div id="contactPopup" class="popup">
+                    <h2 style="line-height: 70px;">Contact Me</h2>
+                    <p style="text-decoration:none; color: black;">
+                        <b>Email:</b> koustubhjuvekarofficial@gmail.com
+                    </p>
 
+                    <p style="text-decoration:none; color: black;">
+                        <b>Mobile: </b>
+                        <a href="tel:+917588371155" style="text-decoration:none; color: black;"> +91 7588 371155</a>
+                    </p>
 
+                    <p style="color: black;">
+                        <b>LinkedIn:</b> 
+                        <a href="https://linkedin.com/in/koustubhjuvekar" target="_blank">
+                            linkedin.com/in/koustubhjuvekar
+                        </a>
+                    </p>
 
-                    <!-- new-->
-                    <script>
-                        function showPopup() {
-                            document.getElementById('overlay').classList.add('active');
-                            document.getElementById('contactPopup').classList.add('active');
-                        }
+                    <p><i>(Scan the QR code or click on the QR code to connect with me on WhatsApp)</i></p>
 
-                        function closePopup() {
-                            document.getElementById('overlay').classList.remove('active');
-                            document.getElementById('contactPopup').classList.remove('active');
-                        }
-                    </script>
+                    <a href="https://wa.me/qr/PS2HL4YKMLYHI1" target="_blank">
+                        <img src="images/whatsapp-qr.png" alt="QR Code" 
+                             style="width:120px; height:120px; margin: 5px 0px; margin-bottom: 20px;">
+                        <br>
+                    </a> 
 
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of header -->
-    <!-- end of header -->
+                    <button onclick="closePopup()" style="
+                            padding: 8px 16px; 
+                            border: none; 
+                            background-color: blue; 
+                            color: white; 
+                            border-radius: 5px; 
+                            cursor: pointer;">
+                        Close
+                    </button>
+                </div>
+
+                <!-- JS -->
+                <script>
+                    function showPopup() {
+                        document.getElementById('overlay').classList.add('active');
+                        document.getElementById('contactPopup').classList.add('active');
+                    }
+
+                    function closePopup() {
+                        document.getElementById('overlay').classList.remove('active');
+                        document.getElementById('contactPopup').classList.remove('active');
+                    }
+                </script>
+
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</header> <!-- end of header -->
+<!-- end of header -->
 
 
     <!-- About-->
