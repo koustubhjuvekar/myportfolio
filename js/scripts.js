@@ -91,3 +91,44 @@
 
 
 })(jQuery);
+
+
+
+// Fetch GitHub Profile Info
+const username = "koustubhjuvekar";
+const profileCard = document.getElementById("profile");
+const repoList = document.getElementById("repo-list");
+
+// Fetch Profile
+fetch(`https://api.github.com/users/${username}`)
+  .then(res => res.json())
+  .then(user => {
+    profileCard.innerHTML = `
+      <img src="${user.avatar_url}" alt="Profile Picture">
+      <h3>${user.name || user.login}</h3>
+      <p>${user.bio || "Passionate Developer 🚀"}</p>
+      <div class="profile-stats">
+        👥 Followers: ${user.followers} | 🔗 Following: ${user.following} <br>
+        📦 Public Repos: ${user.public_repos} | 🏙 Location: ${user.location || "N/A"} <br>
+        🕒 Joined: ${new Date(user.created_at).toLocaleDateString()}
+      </div>
+    `;
+  });
+
+// Fetch Latest 4 Repositories
+fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`)
+  .then(res => res.json())
+  .then(repos => {
+    repos.forEach(repo => {
+      const card = document.createElement("div");
+      card.className = "repo-card";
+      card.innerHTML = `
+        <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
+        <p>${repo.description || "No description available."}</p>
+        <div class="repo-stats">
+          ⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count} | 🛠 ${repo.language || "N/A"}
+        </div>
+      `;
+      repoList.appendChild(card);
+    });
+  });
