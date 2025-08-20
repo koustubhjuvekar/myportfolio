@@ -20,7 +20,7 @@
 			var $anchor = $(this);
 			$('html, body').stop().animate({
 				scrollTop: $($anchor.attr('href')).offset().top
-			}, 600, 'easeInOutExpo');
+			}, 5, 'easeInOutExpo');
 			event.preventDefault();
 		});
     });
@@ -39,7 +39,7 @@
             _m.toggleClass('show', shouldOpen);
             _d.toggleClass('show', shouldOpen);
             $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
-        }, e.type === 'mouseleave' ? 300 : 0);
+        }, e.type === 'mouseleave' ? 300: 0);
     }
     $('body')
     .on('mouseenter mouseleave','.dropdown',toggleDropdown)
