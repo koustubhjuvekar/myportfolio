@@ -1530,8 +1530,10 @@ a:hover.back-to-top {
   margin-bottom:auto
 }
 .calendar-block img {
-  width: 100%;
-  border-radius: 10px;
+  /*width: 100%;
+  border-radius: 10px;*/
+  filter: invert(1) hue-rotate(180deg) contrast(1.5) brightness(1.2);
+  border-radius: 12px;
 }
 .calendar-block h3 {
 	text-align: center;
@@ -1575,4 +1577,5 @@ a:hover.back-to-top {
   color: #aaa;
   margin-top: 10px;
 }
+
 
