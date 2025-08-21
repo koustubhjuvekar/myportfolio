@@ -81,8 +81,8 @@
         strings: [
             `I am <span style="color: orange; ">AWS Cloud</span> and <span style="color: blue;">DevOps</span> Engineer!`
         ],
-        typeSpeed: 50,
-        backSpeed: 25,
+        typeSpeed: 100,
+        backSpeed: 1,
         loop: true,
         smartBackspace: true,
         showCursor: true,
