@@ -234,18 +234,19 @@ a:hover {
 .btn-resume-open {
 	display: inline-block;
 	padding: 1.2rem 2.25rem 1.375rem 2.25rem;
-	border: 1px solid white;
+	/*border: 1px solid white;*/
 	background-color: transparent;
 	color: transparent;
 	width: 270px;
+	height: 40px;
 	font-weight: 600;
 	font-size: 0.875rem;
 	line-height: 0;
 	text-decoration: none;
-	transition: all 0.2s;
+	transition: all 0.5s;
 }
 .btn-resume-open:hover {
-	background-color: orange;
+	background-color: rgb(46, 112, 38);
 	text-decoration: none;
 }
 
@@ -546,7 +547,8 @@ input[type='checkbox'] {
 	text-align: left;
     display: flex;
     align-items: center;
-	height: 500px; /* Add this line to control height*/
+	height: 600px; /* Add this line to control height*/
+	margin-bottom: auto;
 }
 
 .header .h1-large {
@@ -1410,23 +1412,71 @@ a:hover.back-to-top {
     display: block;
 }
 
-#resume-button {
-  animation: blinker 1s linear infinite;
+
+/******************************************************************************************************************
+REsume Button animation
+
+
+/*#resume-button {
+  /*animation: blinker 3.5s linear infinite;*/
+  /*transform: translateY(2px);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.3);
   /*background: linear-gradient(to right, #0033cc, #cc0000); /* Blue to Red */
-  color: white;
+  /*color: white;
   padding: 20px 20px;
   border: 1px solid #ffffff;
   cursor: pointer;
   font-weight: bold;
-  border-radius: 2px;
+  border-radius:20px;
+}*/
+#resume-button {
+  color: white;
+  padding: 15px 30px;
+  /*border: 1px solid #ffffff;*/
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  background: linear-gradient(to right, #1b1b1b, #292929);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes blinker {
+/* Shimmer effect */
+#resume-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+}
+
+/* Animate shimmer on hover */
+#resume-button:hover::before {
+  animation: shimmer 1s forwards;
+}
+
+@keyframes shimmer {
+  0%   { left: -75%; }
+  100% { left: 125%; }
+}
+
+
+
+/*@keyframes blinker {
   50% {
     opacity: 0;
   }
-}
-
+}*/
+/**************************************************************************************************************************
 
 /* Header heading container */
 .heading-container {
@@ -1577,5 +1627,4 @@ a:hover.back-to-top {
   color: #aaa;
   margin-top: 10px;
 }
-
 
