@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Editor</title>
+
+<link rel="stylesheet" href="css/editor.css">
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Create Article</h1>
+
+<input
+type="text"
+id="title"
+placeholder="Article Title">
+
+<select id="category">
+
+<option value="blog">Blog</option>
+
+<option value="study">Study</option>
+
+</select>
+
+<textarea id="editor"></textarea>
+
+<div class="buttons">
+
+<button onclick="previewPost()">
+
+Preview
+
+</button>
+
+<button onclick="publishPost()">
+
+Publish
+
+</button>
+
+</div>
+
+</div>
+
+<script src="js/editor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KJ Admin Dashboard</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>KJ CMS</h2>
+
+<ul>
+
+<li class="active">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</li>
+
+<li onclick="location.href='editor.html?type=blog'">
+<i class="fa-solid fa-pen"></i>
+New Blog
+</li>
+
+<li onclick="location.href='editor.html?type=study'">
+<i class="fa-solid fa-book"></i>
+New Study
+</li>
+
+<li>
+<i class="fa-solid fa-folder"></i>
+All Posts
+</li>
+
+<li>
+<i class="fa-solid fa-image"></i>
+Images
+</li>
+
+<li>
+<i class="fa-solid fa-gear"></i>
+Settings
+</li>
+
+<li onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>Dashboard</h1>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-pen"></i>
+
+<h3>New Blog</h3>
+
+<button onclick="location.href='editor.html?type=blog'">
+Create
+</button>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-book"></i>
+
+<h3>New Study</h3>
+
+<button onclick="location.href='editor.html?type=study'">
+Create
+</button>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-folder-open"></i>
+
+<h3>Manage Posts</h3>
+
+<button>
+Open
+</button>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-image"></i>
+
+<h3>Images</h3>
+
+<button>
+Open
+</button>
+
+</div>
+
+</div>
+
+<h2 class="recent-title">Recent Posts</h2>
+
+<table>
+
+<tr>
+
+<th>Title</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>AWS S3</td>
+
+<td>Study</td>
+
+<td>Published</td>
+
+</tr>
+
+<tr>
+
+<td>Git Branching</td>
+
+<td>Blog</td>
+
+<td>Published</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
