@@ -1,3 +1,4 @@
+console.log("TinyMCE =", typeof tinymce);
 tinymce.init({
 
 selector:'#editor',
