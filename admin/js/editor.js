@@ -26,62 +26,66 @@ win.document.write(html);
 
 }
 
-function publishPost(){
+async function publishPost() {
 
-const title=document.getElementById("title").value.trim();
+    const title = document.getElementById("title").value.trim();
 
-const category=document.getElementById("category").value;
+    const category = document.getElementById("category").value;
 
-const content=tinymce.get("editor").getContent();
+    const content = tinymce.get("editor").getContent();
 
-if(title==""){
+    if (title === "") {
+        alert("Enter Title");
+        return;
+    }
 
-alert("Enter Title");
+    try {
 
-return;
+        const response = await fetch("https://portfolio-api.koustubhjuvekarofficial.workers.dev/publish", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                title: title,
+
+                folder: category,
+
+                content: content
+
+            })
+
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+
+        if (result.success) {
+
+            alert("✅ Article Published Successfully!");
+
+        } else {
+
+            alert("❌ Publish Failed");
+
+            console.log(result);
+
+        }
+
+    }
+
+    catch (err) {
+
+        console.log(err);
+
+        alert("Connection Error");
+
+    }
 
 }
-
-const date=new Date().toLocaleDateString();
-
-let html=`
-
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>${title}</title>
-
-<link rel="stylesheet" href="../css/style.css">
-
-</head>
-
-<body>
-
-<div class="article">
-
-<h1>${title}</h1>
-
-<p>${date}</p>
-
-<hr>
-
-${content}
-
-</div>
-
-</body>
-
-</html>
-
-`;
-
-console.log(html);
-
-alert("HTML Generated Successfully.");
-
 }
