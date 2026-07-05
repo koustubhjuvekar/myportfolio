@@ -1,29 +1,40 @@
 console.log("TinyMCE =", typeof tinymce);
+
 tinymce.init({
+    selector: "#editor",
 
-selector:'#editor',
+    license_key: "gpl",
 
-height:650,
+    height: 650,
+    menubar: true,
 
-menubar:true,
+    plugins: [
+        "lists",
+        "link",
+        "image",
+        "table",
+        "code",
+        "preview",
+        "codesample",
+        "media",
+        "fullscreen",
+        "autosave"
+    ],
 
-plugins:
-
-'lists link image table code preview codesample media fullscreen autosave',
-
-toolbar:
-
-'undo redo | blocks | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | image media table link | codesample code preview fullscreen'
-
+    toolbar:
+        "undo redo | blocks | bold italic underline | forecolor backcolor | " +
+        "alignleft aligncenter alignright alignjustify | " +
+        "bullist numlist | image media table link | " +
+        "codesample code preview fullscreen"
 });
 
-function previewPost(){
+function previewPost() {
 
-const html=tinymce.get("editor").getContent();
+    const html = tinymce.get("editor").getContent();
 
-const win=window.open();
+    const win = window.open();
 
-win.document.write(html);
+    win.document.write(html);
 
 }
 
@@ -36,31 +47,37 @@ async function publishPost() {
     const content = tinymce.get("editor").getContent();
 
     if (title === "") {
+
         alert("Enter Title");
+
         return;
+
     }
 
     try {
 
-        const response = await fetch("https://portfolio-api.koustubhjuvekarofficial.workers.dev/publish", {
+        const response = await fetch(
+            "https://portfolio-api.koustubhjuvekarofficial.workers.dev/publish",
+            {
 
-            method: "POST",
+                method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-            body: JSON.stringify({
+                body: JSON.stringify({
 
-                title: title,
+                    title: title,
 
-                folder: category,
+                    folder: category,
 
-                content: content
+                    content: content
 
-            })
+                })
 
-        });
+            }
+        );
 
         const result = await response.json();
 
@@ -78,15 +95,12 @@ async function publishPost() {
 
         }
 
-    }
+    } catch (err) {
 
-    catch (err) {
-
-        console.log(err);
+        console.error(err);
 
         alert("Connection Error");
 
     }
 
-}
 }
