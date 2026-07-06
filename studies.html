@@ -11,7 +11,46 @@
 
 <body>
 
-<div id="app"></div>
+<div class="container">
+
+    <h1 class="page-title">📚 Study Notes</h1>
+
+    <p class="page-subtitle">
+        Notes, Documentation & Learning Resources
+    </p>
+
+    <div class="top-bar">
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search articles..."
+            >
+        </div>
+
+        <div class="filter-box">
+            <select id="sort">
+                <option value="latest">Latest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="cards" id="cards">
+
+        <div class="no-data">
+
+            Loading Articles...
+
+        </div>
+
+    </div>
+
+</div>
 
 <script src="js/studies.js"></script>
 
