@@ -1,13 +1,111 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Coming Soon</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Notes</title>
+
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/studies.css">
+
 </head>
+
 <body>
 
-<h1>Coming Soon...</h1>
+<div class="container py-5">
+
+<h1 class="text-center mb-5">📘 Study Notes</h1>
+
+<input
+id="search"
+class="form-control form-control-lg mb-5"
+placeholder="Search Study Notes">
+
+<div id="cards" class="row">
+
+</div>
+
+</div>
+
+<script>
+
+let all=[];
+
+fetch("data/studies.json")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+all=data;
+
+show(data);
+
+});
+
+function show(data){
+
+const cards=document.getElementById("cards");
+
+cards.innerHTML="";
+
+data.forEach(post=>{
+
+cards.innerHTML+=`
+
+<div class="col-lg-4 mb-4">
+
+<div class="card h-100 shadow">
+
+<div class="card-body">
+
+<h4>${post.title}</h4>
+
+<p>${post.date}</p>
+
+<a
+href="${post.file}"
+class="btn btn-primary">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+document.getElementById("search")
+
+.addEventListener("keyup",function(){
+
+const k=this.value.toLowerCase();
+
+show(
+
+all.filter(x=>
+
+x.title.toLowerCase().includes(k)
+
+)
+
+);
+
+});
+
+</script>
 
 </body>
+
 </html>
