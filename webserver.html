@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Web Server Installation on AWS EC2</title>
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, Segoe UI, Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(10, 18, 35, 0.94);
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+
+    padding: 15px 7%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,.15);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 21px;
+}
+
+.logo span {
+    color: #ffad32;
+}
+
+nav a {
+    color: #dbe4f2;
+    text-decoration: none;
+    margin-left: 24px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #ffb43b;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+    padding: 160px 8%;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,12,26,.95) 0%,
+            rgba(4,12,26,.78) 40%,
+            rgba(4,12,26,.35) 100%
+        ),
+        url("images/webserver/webserverbgg.png");
+
+    background-size: cover;
+    background-position: auto;
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: fadeUp .9s ease;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background: rgba(255,173,50,.14);
+
+    border: 1px solid rgba(255,173,50,.5);
+
+    color: #ffc15c;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #ffb13b;
+}
+
+.hero p {
+    max-width: 730px;
+    color: #d9e2ef;
+    font-size: 18px;
+}
+
+.meta {
+    margin-top: 28px;
+    color: #aebbd0;
+    font-size: 14px;
+}
+
+
+/* =========================
+   PDF BUTTON
+========================= */
+
+/*.pdf-button {
+    margin-top: 25px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ffb13b;
+
+    color: #111827;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .3s;
+}*/
+
+/*.pdf-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(255,177,59,.35);
+}*/
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 45px;
+}
+
+.section-title h2 {
+    margin-top: 45px;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #667085;
+}
+
+
+/* =====================================================
+   INSTALLATION SECTION
+===================================================== */
+
+#process {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+#process .section-title {
+    margin-bottom: 32px;    
+}
+
+#process .section-title h2 {
+    min-height: 25px;
+    font-size: 40px;
+    margin-bottom: 7px;
+    margin-top: 40px;
+}
+
+#process .section-title p {
+    font-size: 15px;
+}
+
+#process .steps {
+    gap: 16px;
+}
+
+#process .step {
+    padding: 21px;
+}
+
+#process .step h3 {
+    font-size: 21px;
+}
+
+#process .step p {
+    font-size: 15px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: #fff;
+
+    border-radius: 22px;
+
+    padding: 32px;
+
+    box-shadow:
+        0 12px 35px rgba(16,24,40,.07);
+
+    border: 1px solid #e7ebf2;
+}
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap: 30px;
+
+    align-items: center;
+}
+
+.feature-img {
+    width: 100%;
+    height: 340px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.14);
+}
+
+.highlight {
+    border-left: 5px solid #f4a52c;
+
+    background: #fff8ec;
+
+    padding: 20px 22px;
+
+    border-radius: 12px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
+.steps {
+    display: grid;
+    gap: 20px;
+}
+
+.step {
+    display: grid;
+
+    grid-template-columns:
+        52px 1fr;
+
+    gap: 17px;
+
+    align-items: start;
+
+    background: #fff;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid #e8ecf3;
+
+    box-shadow:
+        0 8px 25px rgba(16,24,40,.05);
+
+    transition: .3s;
+}
+
+.step:hover {
+    transform: translateX(5px);
+
+    box-shadow:
+        0 15px 35px rgba(16,24,40,.1);
+}
+
+.num {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: #0b1930;
+
+    color: #ffb13b;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+
+    font-size: 16px;
+}
+
+.step h3 {
+    margin-bottom: 7px;
+}
+
+
+/* =========================
+   PROJECT IMAGES
+========================= */
+
+.project-image {
+    max-width: 100%;
+
+    max-height: 300px;
+
+    width: auto;
+    height: auto;
+
+    display: block;
+
+    border: 0;
+
+    border-radius: 5px;
+
+    margin: 18px auto;
+}
+
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box {
+    padding: 16px 18px;
+
+    background: #eef6ff;
+
+    border: 1px solid #cfe4ff;
+
+    border-radius: 13px;
+
+    margin-top: 16px;
+
+    color: #34516f;
+
+    font-size: 14px;
+}
+
+.note {
+    padding: 22px 25px;
+
+    background: #eef6ff;
+
+    border: 1px solid #cfe4ff;
+
+    border-radius: 15px;
+
+    margin-top: 25px;
+
+    color: #34516f;
+}
+
+
+/* =========================
+   WARNING
+========================= */
+
+.warning {
+    padding: 20px;
+
+    background: #fff8ec;
+
+    border-left: 5px solid #f4a52c;
+
+    border-radius: 12px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   COMMAND BOX
+========================= */
+
+.command-wrapper {
+    position: relative;
+    margin-top: 10px;
+}
+
+code {
+    display: block;
+
+    background: #101827;
+
+    color: #dce7f5;
+
+    padding: 13px 70px 13px 17px;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    white-space: pre-wrap;
+
+    min-height: 44px;
+}
+
+
+/* =========================
+   COMMAND ALTERNATIVE
+========================= */
+
+.command-choice {
+    margin-top: 13px;
+
+    padding: 17px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e3e8ef;
+
+    border-radius: 13px;
+}
+
+.choice-label {
+    font-size: 12px;
+
+    font-weight: 800;
+
+    color: #5d6878;
+
+    margin-bottom: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+}
+
+.or-divider {
+    text-align: center;
+
+    margin: 7px 0;
+
+    font-weight: 900;
+
+    color: #f09b1e;
+
+    font-size: 12px;
+}
+
+.use-any {
+    margin-top: 9px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #475467;
+}
+
+
+/* =========================
+   COPY BUTTON
+========================= */
+
+.copy-btn {
+    position: absolute;
+
+    right: 9px;
+    top: 8px;
+
+    border: 1px solid #46566e;
+
+    background: #1d2b40;
+
+    color: white;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    background: #2b3e59;
+}
+
+.copy-btn.copied {
+    background: #18804b;
+
+    border-color: #18804b;
+}
+
+
+/* =========================
+   PORTS
+========================= */
+
+.ports {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+
+    margin-top: 25px;
+}
+
+.port {
+    padding: 22px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    border: 1px solid #e6eaf0;
+
+    box-shadow:
+        0 8px 22px rgba(16,24,40,.05);
+}
+
+.port .number {
+    font-size: 33px;
+
+    font-weight: 900;
+
+    color: #0b1930;
+}
+
+.port h3 {
+    margin: 5px 0;
+
+    color: #f09b1e;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success {
+    padding: 60px 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b1930,
+            #17375f
+        );
+
+    color: white;
+}
+
+.success h2 {
+    font-size: 42px;
+
+    margin-bottom: 12px;
+
+    color: #ffb13b;
+}
+
+.success p {
+    color: #d8e3f1;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #080f1d;
+
+    color: #9eabc0;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+.reveal {
+    animation: fadeUp .8s ease both;
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   QUICK COMMANDS — SIMPLE REFERENCE STYLE
+===================================================== */
+/* =====================================================
+   QUICK COMMANDS — CLEAN TABLE
+===================================================== */
+
+#commands {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+#commands .section-title {
+    margin-bottom: 35px;
+}
+
+#commands .section-title h2 {
+    font-size: 34px;
+}
+
+
+/* Table wrapper */
+
+.quick-table-wrapper {
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 24px rgba(16,24,40,.04);
+}
+
+
+/* Table */
+
+.quick-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+
+/* Header */
+
+.quick-table thead th {
+
+    background: #f8fafc;
+
+    color: #475467;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    padding: 13px 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e1e6ed;
+}
+
+
+/* Column widths */
+
+.quick-table th:nth-child(1) {
+    width: 7%;
+}
+
+.quick-table th:nth-child(2) {
+    width: 43%;
+}
+
+.quick-table th:nth-child(3) {
+    width: 42%;
+}
+
+.quick-table th:nth-child(4) {
+    width: 8%;
+    text-align: center;
+}
+
+
+/* Rows */
+
+.quick-table tbody tr {
+
+    border-bottom: 1px solid #edf0f3;
+
+    transition: background .2s ease;
+}
+
+.quick-table tbody tr:last-child {
+
+    border-bottom: none;
+}
+
+.quick-table tbody tr:hover {
+
+    background: #fafbfc;
+}
+
+
+/* Cells */
+
+.quick-table td {
+
+    padding: 11px 14px;
+
+    color: #526071;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+
+/* Command cell */
+
+.quick-table .command-cell {
+
+    color: #075caf;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+}
+
+
+/* Command itself */
+
+.quick-table code {
+
+    display: inline;
+
+    padding: 0;
+
+    background: none;
+
+    color: #075caf;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+}
+
+
+/* Option label */
+
+.option-label {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #98a2b3;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* OR */
+
+.or-number {
+
+    color: #e69315 !important;
+
+    font-size: 10px !important;
+
+    font-weight: 800 !important;
+
+    text-align: center;
+}
+
+
+/* Copy column */
+
+.copy-cell {
+
+    text-align: center;
+
+    padding-left: 5px !important;
+
+    padding-right: 5px !important;
+}
+
+
+/* Icon-only Copy button */
+
+.icon-copy {
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #d4dbe4;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #344054;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 13px;
+
+    transition: .2s ease;
+}
+
+.icon-copy:hover {
+
+    background: #f2f4f7;
+
+    border-color: #b8c0cc;
+
+    transform: translateY(-1px);
+}
+
+.icon-copy.copied {
+
+    background: #e9f7ef;
+
+    border-color: #8bd0a6;
+}
+
+
+/* Mobile */
+
+@media(max-width:800px) {
+
+    .quick-table-wrapper {
+
+        overflow-x: auto;
+    }
+
+    .quick-table {
+
+        min-width: 700px;
+    }
+
+}
+
+
+/* =========================
+   PRINT / PDF
+========================= */
+
+@media print {
+
+    nav,
+    .pdf-button,
+    .copy-btn {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding: 45px 30px;
+    }
+
+    .section {
+        padding: 35px 0;
+    }
+
+    .step,
+    .quick-row,
+    .quick-alternative {
+        break-inside: avoid;
+
+        box-shadow: none;
+    }
+
+}
+
+
+/* =========================
+   FAQ ACCORDION
+========================= */
+
+#faq {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+#faq .section-title {
+    margin-bottom: 32px;
+}
+
+#faq .section-title h2 {
+    font-size: 34px;
+}
+
+.faq {
+    max-width: 950px;
+    margin: auto;
+}
+
+.faq-item {
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+
+    overflow: hidden;
+}
+
+
+/* Question */
+
+.faq-item summary {
+    list-style: none;
+
+    cursor: pointer;
+
+    padding: 16px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+    background: #ffffff;
+
+    transition: .2s ease;
+}
+
+
+/* Remove default browser arrow */
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary:hover {
+    background: #f8fafc;
+}
+
+
+/* Plus icon */
+
+.faq-icon {
+    width: 27px;
+    height: 27px;
+
+    min-width: 27px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2f7;
+
+    color: #475467;
+
+    font-size: 18px;
+
+    transition: transform .25s ease;
+}
+
+
+/* Rotate + when open */
+
+.faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+}
+
+
+/* Answer */
+
+.faq-content {
+    padding: 0 20px 20px 20px;
+
+    color: #526071;
+
+    font-size: 14px;
+
+    border-top: 1px solid #edf0f3;
+}
+
+.faq-content p {
+    margin-top: 17px;
+}
+
+.faq-content .warning {
+    margin-top: 17px;
+}
+
+
+/* Mobile */
+
+@media(max-width:800px) {
+
+    #faq .section-title h2 {
+        font-size: 30px;
+    }
+
+    .faq-item summary {
+        padding: 15px 16px;
+
+        font-size: 14px;
+    }
+
+    .faq-content {
+        padding: 0 16px 16px 16px;
+    }
+
+}
+
+
+/* =========================
+   FAQ URL / HTML EXAMPLES
+========================= */
+
+.url-example {
+    margin-top: 15px;
+    padding: 16px 20px;
+    background: #f5f7fa;
+    border: 1px solid #e1e6ed;
+    border-radius: 10px;
+    color: #475467;
+    text-align: center;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.html-example {
+    margin-top: 15px;
+    padding: 17px 20px;
+    background: #f5f7fa;
+    border: 1px solid #e1e6ed;
+    border-radius: 10px;
+    color: #475467;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+
+
+/* =====================================================
+   INSTALLATION STEPS — ACCORDION
+===================================================== */
+
+#process .section-title {
+    margin-bottom: 22px;
+}
+
+.step-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 18px;
+}
+
+.control-btn {
+    border: 1px solid #d9dfe7;
+    background: #ffffff;
+    color: #344054;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.control-btn:hover {
+    background: #f8fafc;
+    border-color: #c4ccd7;
+}
+
+.step-accordion {
+    background: #ffffff;
+    border: 1px solid #e8ecf3;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 18px rgba(16,24,40,.04);
+}
+
+.step-header {
+    min-height: 62px;
+    padding: 10px 16px;
+    display: grid;
+    grid-template-columns: 42px 1fr 28px;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    background: #ffffff;
+}
+
+.step-header:hover {
+    background: #fafbfc;
+}
+
+.step-header .num {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+}
+
+.step-title h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 800;
+    color: #172033;
+}
+
+.step-toggle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #eef2f7;
+    color: #475467;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.step-content {
+    display: none;
+    padding: 0 18px 18px 70px;
+    border-top: 1px solid #edf0f3;
+    color: #526071;
+}
+
+.step-accordion.open .step-content {
+    display: block;
+}
+
+.step-accordion.open .step-toggle {
+    background: #e9edf3;
+}
+
+#process .step-content p {
+    font-size: 14px;
+}
+
+#process .step-content .project-image {
+    margin-top: 16px;
+}
+
+@media(max-width:800px) {
+    .step-header {
+        grid-template-columns: 38px 1fr 26px;
+        padding: 9px 12px;
+        gap: 10px;
+    }
+
+    .step-header .num {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .step-title h3 {
+        font-size: 15px;
+    }
+
+    .step-content {
+        padding: 0 14px 14px 14px;
+    }
+}
+
+@media print {
+    .step-controls {
+        display: none !important;
+    }
+
+    .step-content {
+        display: block !important;
+    }
+}
+</style>
+</head>
+<body>
+<!-- =========================
+     NAVIGATION
+========================= -->
+<nav>
+<div class="logo">
+
+        Cloud Engineer
+
+        <span>
+            Projects
+        </span>
+
+</div>
+<div>
+<a href="#home">
+            Home
+        </a>
+<a href="#overview">
+            Overview
+        </a>
+<a href="#process">
+            Installation
+        </a>
+<a href="#commands">
+            Commands
+        </a>
+<a href="#faq">
+            FAQs
+        </a>
+</div>
+</nav>
+<!-- =========================
+     HERO
+========================= -->
+<header class="hero" id="home">
+<div class="hero-content">
+<div class="badge">
+            1
+        </div>
+<div class="badge">
+            AWS EC2 • LINUX • APACHE • HTTP
+        </div>
+<h1>
+
+            Web Server Installation 
+
+            <span>
+                Apache Web Server
+            </span>
+</h1>
+<p>
+
+            A practical guide to launching an AWS EC2
+            instance, configuring Security Group rules,
+            installing Apache HTTP Server, creating an
+            index.html page, and accessing the website
+            through the instance's public IP address.
+
+        </p>
+<div class="meta">
+
+            📘 Practical Web Server Project · Cloud / DevOps Learning
+
+        </div>
+<!--         <button
+            class="pdf-button"
+            onclick="downloadPDF()">
+
+            📄 Download PDF
+
+        </button> -->
+</div>
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</header>
+<main>
+<!-- =========================
+     OVERVIEW
+========================= -->
+<section class="section" id="overview">
+<div class="container">
+<div class="section-title">
+<h2>
+                From EC2 Instance to a Working Website
+            </h2>
+<p>
+                Understanding the complete practical flow.
+            </p>
+</div>
+<div class="intro-grid reveal">
+<div class="card">
+<h2>
+                    The Goal 🎯
+                </h2>
+<p>
+
+                    The purpose of this project is to create
+                    a basic <b>web server (Apache web server here) on an AWS instance</b> and
+                    verify that a webpage can be served to a
+                    user through the server's public IP address.
+
+                </p>
+<div class="highlight">
+<strong>
+                        Cloud Engineer perspective:
+                    </strong>
+<br/>
+
+                    Before uploading a developer's code,
+                    we can create a simple sample index page
+                    and test it.
+
+                    If it loads successfully, we know that
+                    the basic server and network configuration
+                    are working.
+
+                </div>
+</div>
+<img alt="Cloud computing and server infrastructure" class="feature-img" src="images/webserver/goal.png" &amp;fit=crop&amp;w=1200&amp;q=85"/>
+</div>
+</div>
+</section>
+<!-- =========================
+     INSTALLATION PROCESS
+========================= -->
+<section class="section" id="process">
+<div class="container">
+<div class="section-title">
+<h2>
+                Web Server Installation - Step by Step
+            </h2>
+<p>
+                Follow the same sequence used in the practical project.
+            </p>
+</div><div class="step-controls"><button class="control-btn expand-btn" onclick="expandAllSteps()" type="button">＋ Expand All</button><button class="control-btn close-btn" onclick="closeAllSteps()" style="display:none;" type="button">− Close All</button></div>
+<div class="steps">
+<!-- STEP 01 -->
+<div class="step-accordion reveal" data-step="1"><div class="step-header" onclick="toggleStep(this)"><div class="num">01</div><div class="step-title"><h3>
+            Launch AWS Instance ☁️
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Launch an AWS EC2 instance.
+
+            After launching the instance,
+            identify its Public IP address
+            and the Security Group attached
+            to it.
+
+        </p>
+<img alt="AWS EC2 Instance" class="project-image" src="images/webserver/image1.png"/>
+</div></div>
+<!-- STEP 02 -->
+<div class="step-accordion reveal" data-step="2"><div class="step-header" onclick="toggleStep(this)"><div class="num">02</div><div class="step-title"><h3>
+            Open the Security Group 🔐
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Click on the EC2 instance.
+
+            Then:
+
+            <strong>
+                Scroll down → Security → Click Security Group
+            </strong>
+</p>
+<img alt="AWS Security Group" class="project-image" src="images/webserver/image2.png"/>
+</div></div>
+<!-- STEP 03 -->
+<div class="step-accordion reveal" data-step="3"><div class="step-header" onclick="toggleStep(this)"><div class="num">03</div><div class="step-title"><h3>
+            Check the Inbound Rules 🌐
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Check the Security Group's
+            Inbound Rules.
+
+            The required ports should be open.
+
+        </p>
+<div class="ports">
+<div class="port">
+<div class="number">
+                    22
+                </div>
+<h3>
+                    SSH
+                </h3>
+<p>
+                    Used to connect to the server remotely.
+                </p>
+</div>
+<div class="port">
+<div class="number">
+                    80
+                </div>
+<h3>
+                    HTTP
+                </h3>
+<p>
+                    Used for normal HTTP web traffic.
+                </p>
+</div>
+<div class="port">
+<div class="number">
+                    443
+                </div>
+<h3>
+                    HTTPS
+                </h3>
+<p>
+                    Used for HTTPS traffic when
+                    TLS/SSL is configured.
+                </p>
+</div>
+</div>
+<p style="margin-top:20px;">
+
+            If a required port is not open,
+            click on <strong>Edit Inbound Rules</strong>,
+            add the rule, and save it.
+
+        </p>
+<div class="info-box">
+<strong>
+                Inbound Rule:
+            </strong>
+
+            Defines which ports are allowed
+            to accept incoming requests from
+            the internet.
+
+        </div>
+<img alt="AWS Inbound Rules" class="project-image" src="images/webserver/image3.png"/>
+</div></div>
+<!-- STEP 04 -->
+<div class="step-accordion reveal" data-step="4"><div class="step-header" onclick="toggleStep(this)"><div class="num">04</div><div class="step-title"><h3>
+            Copy the Public IP Address 🌍
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Copy the Public IP address of the
+            AWS EC2 instance.
+
+            This IP address will later be entered
+            in the browser to access the webpage.
+
+        </p>
+<img alt="AWS EC2 Public IP" class="project-image" src="images/webserver/image4.png"/>
+</div></div>
+<!-- STEP 05 -->
+<div class="step-accordion reveal" data-step="5"><div class="step-header" onclick="toggleStep(this)"><div class="num">05</div><div class="step-title"><h3>
+            SSH Into the Server 🔑
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Now SSH into the server using
+            PowerShell or any client shell.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd1">
+ssh -i your-key.pem ec2-user@YOUR_PUBLIC_IP
+            </code>
+
+<button class="copy-btn" onclick="copyCommand('cmd1',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Connects to the EC2 server remotely
+            using SSH.
+
+        </div>
+</div></div>
+<!-- STEP 06 -->
+<div class="step-accordion reveal" data-step="6"><div class="step-header" onclick="toggleStep(this)"><div class="num">06</div><div class="step-title"><h3>
+            Update Server Packages 📦
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Update the packages on the server
+            before installing Apache.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd2">
+sudo yum update -y
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd2',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Updates the available packages
+            on the server.
+
+        </div>
+</div></div>
+<!-- STEP 07 -->
+<div class="step-accordion reveal" data-step="7"><div class="step-header" onclick="toggleStep(this)"><div class="num">07</div><div class="step-title"><h3>
+            Install Apache Web Server 🖥️
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<div class="command-wrapper">
+<code id="cmd3">
+sudo yum install httpd -y
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd3',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Installs the Apache HTTP Server
+            package on the server.
+
+        </div>
+</div></div>
+<!-- STEP 08 -->
+<div class="step-accordion reveal" data-step="8"><div class="step-header" onclick="toggleStep(this)"><div class="num">08</div><div class="step-title"><h3>
+            Check Apache Version 🔍
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Verify that Apache was installed
+            successfully by checking its version.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd4">
+httpd -v
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd4',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Displays the installed Apache HTTP Server
+            version and helps verify that the software
+            is installed.
+
+        </div>
+<img alt="Apache Version" class="project-image" src="images/webserver/image5.png"/>
+</div></div>
+<!-- STEP 09 -->
+<div class="step-accordion reveal" data-step="9"><div class="step-header" onclick="toggleStep(this)"><div class="num">09</div><div class="step-title"><h3>
+            Start Apache Server ▶️
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Start the Apache web server.
+
+            Both commands perform the same task.
+            You can use either one.
+
+        </p>
+<div class="command-choice">
+<div class="choice-label">
+                Option 1
+            </div>
+<div class="command-wrapper">
+<code id="cmd5">
+sudo service httpd start
+                </code>
+<button class="copy-btn" onclick="copyCommand('cmd5',this)">
+
+                    <i class="fa-regular fa-copy"></i>
+
+                </button>
+</div>
+<div class="or-divider">
+                — OR —
+            </div>
+<div class="choice-label">
+                Option 2
+            </div>
+<div class="command-wrapper">
+<code id="cmd6">
+sudo systemctl start httpd
+                </code>
+<button class="copy-btn" onclick="copyCommand('cmd6',this)">
+
+                    <i class="fa-regular fa-copy"></i>
+
+                </button>
+</div>
+<div class="use-any">
+
+                ✓ Use any one of these commands.
+
+            </div>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Both commands start the Apache HTTP Server.
+
+        </div>
+</div></div>
+<!-- STEP 10 -->
+<div class="step-accordion reveal" data-step="10"><div class="step-header" onclick="toggleStep(this)"><div class="num">10</div><div class="step-title"><h3>
+            Check Apache Status 💚
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Check whether the Apache service
+            is running.
+
+            Both commands provide the Apache
+            service status.
+
+        </p>
+<div class="command-choice">
+<div class="choice-label">
+                Option 1
+            </div>
+<div class="command-wrapper">
+<code id="cmd7">
+sudo service httpd status
+                </code>
+<button class="copy-btn" onclick="copyCommand('cmd7',this)">
+
+                   <i class="fa-regular fa-copy"></i>
+
+                </button>
+</div>
+<div class="or-divider">
+                — OR —
+            </div>
+<div class="choice-label">
+                Option 2
+            </div>
+<div class="command-wrapper">
+<code id="cmd8">
+sudo systemctl status httpd
+                </code>
+<button class="copy-btn" onclick="copyCommand('cmd8',this)">
+
+                    <i class="fa-regular fa-copy"></i>
+
+                </button>
+</div>
+<div class="use-any">
+
+                ✓ Use any one of these commands.
+
+            </div>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Both commands display the current
+            Apache service status.
+
+        </div>
+</div></div>
+<!-- STEP 11 -->
+<div class="step-accordion reveal" data-step="11"><div class="step-header" onclick="toggleStep(this)"><div class="num">11</div><div class="step-title"><h3>
+            Enable Apache at Boot 🔄
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Enable Apache so that it starts
+            automatically whenever the server
+            comes back online.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd9">
+sudo systemctl enable httpd
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd9',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Enables Apache to start automatically
+            when the server boots.
+
+        </div>
+</div></div>
+<!-- STEP 12 -->
+<div class="step-accordion reveal" data-step="12"><div class="step-header" onclick="toggleStep(this)"><div class="num">12</div><div class="step-title"><h3>
+            Go to Apache's Document Root 📁
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Apache uses a document root to
+            serve webpages.
+
+            In this project we will create
+            our webpage inside:
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd10">
+cd /var/www/html
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd10',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Moves into Apache's default document
+            root directory used in this project.
+
+        </div>
+</div></div>
+<!-- STEP 13 -->
+<div class="step-accordion reveal" data-step="13"><div class="step-header" onclick="toggleStep(this)"><div class="num">13</div><div class="step-title"><h3>
+            Create index.html ✍️
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Now create the webpage using
+            the nano editor.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd11">
+sudo nano index.html
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd11',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<div class="info-box">
+<strong>
+                Meaning:
+            </strong>
+
+            Opens the nano editor and creates
+            or edits the index.html file.
+
+        </div>
+</div></div>
+<!-- STEP 14 -->
+<div class="step-accordion reveal" data-step="14"><div class="step-header" onclick="toggleStep(this)"><div class="num">14</div><div class="step-title"><h3>
+            Add HTML Code and Save 💻
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            When nano opens, write or paste
+            your HTML code inside index.html.
+
+            After adding the code, save the file.
+
+        </p>
+<div class="info-box">
+<strong>
+                Save the file:
+            </strong>
+<br/><br/>
+
+            Press <strong>Ctrl + X</strong>
+<br/>
+
+            Press <strong>Y</strong>
+<br/>
+
+            Press <strong>Enter</strong>
+</div>
+<img alt="Nano Save Process" class="project-image" src="images/webserver/image6.png"/>
+</div></div>
+<!-- STEP 15 -->
+<div class="step-accordion reveal" data-step="15"><div class="step-header" onclick="toggleStep(this)"><div class="num">15</div><div class="step-title"><h3>
+            Open the Website in Browser 🌐
+        </h3></div><span class="step-toggle">+</span></div><div class="step-content">
+
+<p>
+
+            Now go to the browser and enter
+            the EC2 Public IP address using HTTP.
+
+        </p>
+<div class="command-wrapper">
+<code id="cmd13">
+http://YOUR_PUBLIC_IP/
+            </code>
+<button class="copy-btn" onclick="copyCommand('cmd13',this)">
+
+                <i class="fa-regular fa-copy"></i>
+
+            </button>
+</div>
+<img alt="Web Server Result" class="project-image" src="images/webserver/image7.png"/>
+<div class="info-box">
+<strong>
+                Expected Result:
+            </strong>
+<br/>
+
+            Your index.html webpage should be
+            displayed in the browser.
+
+        </div>
+</div></div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+     QUICK COMMANDS
+===================================================== -->
+<!-- =====================================================
+     QUICK COMMANDS — SIMPLE TABLE
+===================================================== -->
+<section class="section" id="commands" style="background:#f0f4f9;">
+<div class="container">
+<div class="section-title">
+<h2>
+                Important Commands at a Glance 💻
+            </h2>
+<p>
+                A quick reference for the practical.
+            </p>
+</div>
+<div class="quick-table-wrapper">
+<table class="quick-table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+                            Command
+                        </th>
+<th>
+                            Purpose
+                        </th>
+<th>
+                            Copy
+                        </th>
+</tr>
+</thead>
+<tbody>
+<!-- 01 -->
+<tr>
+<td>
+                            01
+                        </td>
+<td class="command-cell">
+<code>
+                                ssh -i your-key.pem ec2-user@YOUR_PUBLIC_IP
+                            </code>
+</td>
+<td>
+                            Connect to the EC2 server remotely using SSH.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('ssh -i your-key.pem ec2-user@YOUR_PUBLIC_IP', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 02 -->
+<tr>
+<td>
+                            02
+                        </td>
+<td class="command-cell">
+<code>
+                                sudo yum update -y
+                            </code>
+</td>
+<td>
+                            Update the available packages on the server.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo yum update -y', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 03 -->
+<tr>
+<td>
+                            03
+                        </td>
+<td class="command-cell">
+<code>
+                                sudo yum install httpd -y
+                            </code>
+</td>
+<td>
+                            Install the Apache HTTP Server.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo yum install httpd -y', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 04 -->
+<tr>
+<td>
+                            04
+                        </td>
+<td class="command-cell">
+<code>
+                                httpd -v
+                            </code>
+</td>
+<td>
+                            Check the installed Apache version.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('httpd -v', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 05A -->
+<tr>
+<td>
+                            05
+                        </td>
+<td class="command-cell">
+<span class="option-label">
+                                Option 1
+                            </span>
+<code>
+                                sudo service httpd start
+                            </code>
+</td>
+<td>
+                            Start Apache.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo service httpd start', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 05B -->
+<tr>
+<td class="or-number">
+                            OR
+                        </td>
+<td class="command-cell">
+<span class="option-label">
+                                Option 2
+                            </span>
+<code>
+                                sudo systemctl start httpd
+                            </code>
+</td>
+<td>
+                            Start Apache.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo systemctl start httpd', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 06A -->
+<tr>
+<td>
+                            06
+                        </td>
+<td class="command-cell">
+<span class="option-label">
+                                Option 1
+                            </span>
+<code>
+                                sudo service httpd status
+                            </code>
+</td>
+<td>
+                            Check Apache status.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo service httpd status', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 06B -->
+<tr>
+<td class="or-number">
+                            OR
+                        </td>
+<td class="command-cell">
+<span class="option-label">
+                                Option 2
+                            </span>
+<code>
+                                sudo systemctl status httpd
+                            </code>
+</td>
+<td>
+                            Check Apache status.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo systemctl status httpd', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 07 -->
+<tr>
+<td>
+                            07
+                        </td>
+<td class="command-cell">
+<code>
+                                sudo systemctl enable httpd
+                            </code>
+</td>
+<td>
+                            Enable Apache to start automatically at boot.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo systemctl enable httpd', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 08 -->
+<tr>
+<td>
+                            08
+                        </td>
+<td class="command-cell">
+<code>
+                                cd /var/www/html
+                            </code>
+</td>
+<td>
+                            Move to Apache's document root.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('cd /var/www/html', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- 09 -->
+<tr>
+<td>
+                            09
+                        </td>
+<td class="command-cell">
+<code>
+                                sudo nano index.html
+                            </code>
+</td>
+<td>
+                            Create or edit the index.html webpage.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('sudo nano index.html', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+<!-- -->
+<tr>
+<td>
+</td>
+<td class="command-cell">
+<code>
+<b>Ctrl + X → Y → Enter
+                            </b></code>
+</td>
+<td>
+                            Save the file and exit nano.
+                        </td>
+<td class="copy-cell">
+<!-- <button class="icon-copy" onclick="copyText('Ctrl + X → Y → Enter', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button> -->
+</td>
+</tr>
+<!-- 10 -->
+<tr>
+<td>
+                            10
+                        </td>
+<td class="command-cell">
+<code>
+                                http://YOUR_PUBLIC_IP/
+                            </code>
+</td>
+<td>
+                            Open the webpage through the EC2 public IP.
+                        </td>
+<td class="copy-cell">
+<button class="icon-copy" onclick="copyText('http://YOUR_PUBLIC_IP/', this)" title="Copy">
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- =========================
+     FAQ SECTION
+========================= -->
+<section class="section" id="faq" style="background:#f0f4f9;">
+<div class="container">
+<div class="section-title">
+<h2>
+                Frequently Asked Questions ?
+            </h2>
+<p>
+                Quick answers to common questions about this practical.
+            </p>
+</div>
+<div class="faq">
+<!-- FAQ 01 -->
+<details class="faq-item">
+<summary>
+<span>
+                        Why are we using HTTP instead of HTTPS?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+                        HTTPS uses port <strong>443</strong>
+                        and requires TLS/SSL configuration
+                        to establish a secure connection.
+                    </p>
+<div class="warning">
+<strong>
+                            For study and practice purposes:
+                        </strong>
+<br/><br/>
+
+                        We are using <strong>HTTP</strong>
+                        instead of HTTPS.
+
+                        HTTP uses port <strong>80</strong>,
+                        so an SSL/TLS certificate is not
+                        required for this basic practical.
+
+                    </div>
+</div>
+</details>
+<!-- FAQ 02 -->
+<details class="faq-item">
+<summary>
+<span>
+                        What is the purpose of port 22?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+                        Port <strong>22</strong> is used for
+                        SSH connections. It allows us to
+                        remotely connect to and manage
+                        the EC2 server.
+                    </p>
+</div>
+</details>
+<!-- FAQ 03 -->
+<details class="faq-item">
+<summary>
+<span>
+                        What is the purpose of port 80?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+                        Port <strong>80</strong> is the standard
+                        port used for HTTP web traffic.
+
+                        In this practical, the browser sends
+                        the HTTP request through port 80.
+                    </p>
+</div>
+</details>
+<!-- FAQ 04 -->
+<details class="faq-item">
+<summary>
+<span>
+                        What is the purpose of /var/www/html?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+                        In this project,
+                        <strong>/var/www/html</strong>
+                        is the Apache document root where
+                        the webpage files are created.
+                    </p>
+</div>
+</details>
+<!-- FAQ 05 -->
+<details class="faq-item">
+<summary>
+<span>
+                        Why do we create index.html?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+<strong>index.html</strong> is commonly
+                        used as the default webpage served when
+                        the website root is accessed.
+                    </p>
+</div>
+</details>
+<!-- FAQ 06 -->
+<details class="faq-item">
+<summary>
+<span>
+                        Why do we use sudo with some commands?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+<strong>sudo</strong> allows a permitted
+                        user to execute commands with administrator
+                        privileges.
+
+                        It is required for operations such as
+                        installing packages and managing system
+                        services.
+                    </p>
+</div>
+</details>
+<!-- FAQ 07 -->
+<details class="faq-item">
+<summary>
+<span>
+                        Is index.html the default page everywhere, or can we change it?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+<strong>index.html</strong> is commonly used as the
+                        default page, but it is not mandatory everywhere.
+
+                        The default page is controlled by the web server
+                        configuration.
+
+                        In Apache, the default page can be changed using
+                        the <strong>DirectoryIndex</strong> setting.
+                    </p>
+<p>
+                        For example:
+                    </p>
+<div class="command-wrapper">
+<code>
+DirectoryIndex home.html
+                        </code>
+</div>
+<p>
+                        After this configuration, when a user opens:
+                    </p>
+<div class="url-example">
+                        http://YOUR_IP/
+                    </div>
+<p>
+                        Apache can serve <strong>home.html</strong>
+                        instead of <strong>index.html</strong>.
+                    </p>
+</div>
+</details>
+<!-- FAQ 08 -->
+<details class="faq-item">
+<summary>
+<span>
+                        How can we open a specific page using the browser URL?
+                    </span>
+<span class="faq-icon">
+                        +
+                    </span>
+</summary>
+<div class="faq-content">
+<p>
+                        When you open only the IP address or domain:
+                    </p>
+<div class="url-example">
+                        http://YOUR_IP/
+                    </div>
+<p>
+                        the web server serves its configured default page.
+                    </p>
+<p>
+                        To open a specific HTML page, you can include
+                        the filename in the URL.
+                    </p>
+<div class="url-example">
+                        http://YOUR_IP/about.html
+                    </div>
+<p>
+                        Similarly, you can open other pages such as:
+                    </p>
+<div class="url-example">
+                        http://YOUR_IP/contact.html
+                    </div>
+<div class="url-example">
+                        http://YOUR_IP/services.html
+                    </div>
+<p>
+                        In real-world websites, users normally do not type
+                        these URLs manually. Instead, webpages provide
+                        navigation menus, buttons, links, and other
+                        clickable elements.
+                    </p>
+<div class="html-example">
+&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+
+&lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+
+&lt;a href="services.html"&gt;Services&lt;/a&gt;
+                    </div>
+<p>
+                        So the basic flow is:
+                        <strong>
+                            User opens the website → Default page loads →
+                            User clicks a link or button → Specific page opens.
+                        </strong>
+</p>
+</div>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+<p>
+        ☁️ Web Server Installation Practical Project
+    </p>
+<p style="margin-top:7px">
+
+        AWS EC2 • Linux • Apache HTTP Server • HTML
+
+    </p>
+</footer>
+<!-- =========================
+     COPY SCRIPT
+========================= -->
+<script>
+
+function copyCommand(id, button) {
+
+    const text =
+        document
+        .getElementById(id)
+        .innerText
+        .trim();
+
+    navigator.clipboard
+        .writeText(text)
+        .then(function () {
+
+            const oldText =
+                button.innerText;
+
+            button.innerText =
+                "✓ Copied";
+
+            button.classList.add(
+                "copied"
+            );
+
+            setTimeout(function () {
+
+                button.innerText =
+                    oldText;
+
+                button.classList.remove(
+                    "copied"
+                );
+
+            }, 1200);
+
+        });
+
+}
+
+
+function copyText(text, button) {
+
+    navigator.clipboard
+        .writeText(text)
+        .then(function () {
+
+            const oldText =
+                button.innerText;
+
+            button.innerText =
+                "✓ Copied";
+
+            button.classList.add(
+                "copied"
+            );
+
+            setTimeout(function () {
+
+                button.innerText =
+                    oldText;
+
+                button.classList.remove(
+                    "copied"
+                );
+
+            }, 1200);
+
+        });
+
+}
+
+
+
+function toggleStep(header) {
+    const step = header.closest('.step-accordion');
+    const isOpen = step.classList.toggle('open');
+    const icon = header.querySelector('.step-toggle');
+    if (icon) icon.textContent = isOpen ? '−' : '+';
+}
+
+function expandAllSteps() {
+    document.querySelectorAll('#process .step-accordion').forEach(function(step) {
+        step.classList.add('open');
+        const icon = step.querySelector('.step-toggle');
+        if (icon) icon.textContent = '−';
+    });
+
+    const expandBtn = document.querySelector('.expand-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    if (expandBtn) expandBtn.style.display = 'none';
+    if (closeBtn) closeBtn.style.display = 'inline-flex';
+}
+
+function closeAllSteps() {
+    document.querySelectorAll('#process .step-accordion').forEach(function(step) {
+        step.classList.remove('open');
+        const icon = step.querySelector('.step-toggle');
+        if (icon) icon.textContent = '+';
+    });
+
+    const expandBtn = document.querySelector('.expand-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    if (expandBtn) expandBtn.style.display = 'inline-flex';
+    if (closeBtn) closeBtn.style.display = 'none';
+}
+
+</script>
+
+
+<!-- copy button ke liye -->
+
+<script>
+
+function copyCommand(id, button) {
+
+    const text = document
+        .getElementById(id)
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(text)
+        .then(function () {
+
+            // Copy icon -> Check icon
+            button.innerHTML =
+                '<i class="fa-solid fa-check"></i>';
+
+            setTimeout(function () {
+
+                // Check icon -> Copy icon
+                button.innerHTML =
+                    '<i class="fa-solid fa-copy"></i>';
+
+            }, 1200);
+
+        });
+
+}
+
+</script>
+
+
+<!-- copy buton in table -->
+<script>
+
+function copyText(text, button) {
+
+    navigator.clipboard.writeText(text)
+        .then(function () {
+
+            // Copy icon → Check icon
+            button.innerHTML =
+                '<i class="fa-solid fa-check"></i>';
+
+            button.classList.add("copied");
+
+            setTimeout(function () {
+
+                // Check icon → Copy icon
+                button.innerHTML =
+                    '<i class="fa-regular fa-copy"></i>';
+
+                button.classList.remove("copied");
+
+            }, 1200);
+
+        });
+
+}
+
+</script>
+</body>
+</html>
