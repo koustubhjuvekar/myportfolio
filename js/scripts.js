@@ -132,3 +132,85 @@ fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`)
       repoList.appendChild(card);
     });
   });
+
+// Hamburger
+      /* =====================================================
+       INLINE HAMBURGER MENU
+    ===================================================== */
+
+    (function () {
+
+        const hamburger =
+            document.getElementById("customHamburger");
+
+        const menu =
+            document.getElementById("customMenu");
+
+        if (!hamburger || !menu) return;
+
+        function closeMenu() {
+
+            menu.classList.remove("open");
+            hamburger.classList.remove("open");
+            hamburger.setAttribute("aria-expanded", "false");
+
+        }
+
+        hamburger.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            const isOpen =
+                menu.classList.toggle("open");
+
+            hamburger.classList.toggle("open", isOpen);
+
+            hamburger.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+        });
+
+        /* Close after choosing a menu item */
+        menu.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+                closeMenu();
+            });
+
+        });
+
+        /* Close when clicking anywhere outside */
+        document.addEventListener("click", function (event) {
+
+            if (
+                !menu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                closeMenu();
+            }
+
+        });
+
+        /* Escape key */
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+    })();
+
+
+
+
+
+
+
+
+
+
+

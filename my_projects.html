@@ -1,0 +1,3098 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Projects | Koustubh Juvekar</title>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO HEAD
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- Official tool / technology icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<!-- 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END HTML HEAD PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<style>
+:root{--bg:#f5f5f2;--card:#fff;--ink:#20262d;--muted:#6e7580;--line:#e3e5e8;--dark:#272b2f;--dark2:#34383d;--accent:#b7833d;--accentSoft:#f8efe3;--sage:#58766a;--bluegray:#5f7283;--rose:#8c6670;--shadow:0 10px 28px rgba(34,38,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font:inherit}
+.topnav{position:sticky;top:0;z-index:1000;min-height:72px;padding:12px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(39,43,47,.97);backdrop-filter:blur(10px);box-shadow:0 5px 20px rgba(0,0,0,.12)}
+
+/*.brand {
+  display:flex;align-items:center;gap:11px;color:#fff}
+  .brandmark{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#273246;border:1px solid rgba(255,255,255,.12);font-weight:800}
+
+.brandtext{line-height:1.1}
+.brandname{font-size:16px;font-weight:800}
+.brandsub{font-size:11px;color:#aab6c6;margin-top:4px}*/
+
+.brand{
+    position: absolute;
+    left: 5%;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.navlinks{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.navbtn{padding:8px 12px;border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#dce4ee;font-size:13px;font-weight:700}.navbtn:hover{background:rgba(255,255,255,.06);color:#fff}.navbtn.active{color:#e0b171;border-color:rgba(224,177,113,.32)}
+.navbtn.website{color:#f0c079;border-color:rgba(224,177,113,.28)}
+.navbtn.website:hover{background:rgba(224,177,113,.08);color:#ffd28d}
+/* Last opened project highlight */
+.last-project-highlight{
+  position:fixed;
+  top:86px;
+  right:5%;
+  z-index:1500;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid rgba(183,131,61,.42);
+  border-radius:10px;
+  background:rgba(255,252,247,.98);
+  color:#5a4631;
+  box-shadow:0 10px 28px rgba(34,38,42,.13),0 0 0 0 rgba(183,131,61,.24);
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none;
+  animation:lastProjectPulse 2.4s ease-in-out infinite;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-8px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.last-project-highlight.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.last-project-highlight .last-label{color:#8b95a4;font-weight:700;margin-right:2px}
+.last-project-highlight .last-arrow{font-size:15px;color:#b7833d}
+@keyframes lastProjectPulse{
+  0%,100%{box-shadow:0 10px 28px rgba(34,38,42,.13),0 0 0 0 rgba(183,131,61,.20)}
+  50%{box-shadow:0 12px 30px rgba(34,38,42,.15),0 0 0 6px rgba(183,131,61,.07)}
+}
+@media(max-width:640px){
+  .last-project-highlight{left:5%;right:5%;top:78px;justify-content:center;text-align:center}
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #252a2f,
+            #3b4248
+        );
+
+    color:#fff;
+    padding:162px 6% 68px;
+}
+
+
+/* Animated lines */
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:-50%;
+
+    background-image:
+        linear-gradient(
+            120deg,
+            transparent 48%,
+            rgba(255,255,255,.08) 49%,
+            rgba(255,255,255,.08) 50%,
+            transparent 51%
+        ),
+        linear-gradient(
+            60deg,
+            transparent 48%,
+            rgba(183,131,61,.10) 49%,
+            rgba(183,131,61,.10) 50%,
+            transparent 51%
+        );
+
+    background-size:
+        90px 90px,
+        130px 130px;
+
+    transform:rotate(0deg);
+
+    animation:
+        heroLines 18s linear infinite;
+}
+
+.hero::after{
+    opacity:.45;
+
+    background-size:
+        140px 140px,
+        180px 180px;
+
+    animation-duration:28s;
+
+    animation-direction:reverse;
+}
+
+
+@keyframes heroLines{
+
+    0%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    100%{
+        transform:
+            translate(90px,90px)
+            rotate(1deg);
+    }
+
+}
+
+
+/* Keep actual hero content above lines */
+
+.hero > *{
+    position:relative;
+    z-index:2;
+}
+
+
+
+  .heroInner{
+    width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center
+  }
+
+  .eyebrow{display:inline-block;padding:7px 11px;border:1px solid rgba(245,197,111,.25);border-radius:999px;background:rgba(245,197,111,.08);color:#f3c16b;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:18px}.hero h1{font-size:clamp(38px,5vw,58px);line-height:1.05;margin-bottom:18px}.hero h1 span{color:#d7ae79}.hero p{max-width:710px;color:#d0d9e5;font-size:17px}.heroPanel{padding:22px;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:rgba(255,255,255,.035);box-shadow:0 18px 40px rgba(0,0,0,.15)}.heroPanel h3{font-size:14px;margin-bottom:12px}.flow{display:grid;gap:8px}.flowitem{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,.045);color:#dce5ef;font-size:13px}.flowdot{width:7px;height:7px;border-radius:50%;background:#efb757}
+main{width:min(1180px,92%);margin:auto;padding:54px 0 76px}.sectionHead{margin-bottom:22px}.sectionHead h2{font-size:31px;line-height:1.2;margin-bottom:6px}.sectionHead p{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start;grid-auto-flow:dense}.card{align-self:start;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:.22s ease}.card:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(16,24,40,.09)}.catBtn{width:100%;border:0;background:#fff;position:relative;padding:18px 19px;display:grid;grid-template-columns:54px 1fr 30px;align-items:center;gap:13px;text-align:left;color:var(--ink);cursor:pointer}.catIcon{width:54px;height:54px;display:grid;place-items:center;border-radius:13px;background:#f1f4f8;border:1px solid #e3e8ee;font-weight:900;color:#344054}.catTitle{font-size:17px;font-weight:800}.catSub{display:block;margin-top:3px;font-size:12px;color:var(--muted)}.catArrow{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#f2f4f7;color:#5a6676;transition:.22s}.card.open .catArrow{transform:rotate(90deg);background:var(--accentSoft);color:#a56f19}.content{max-height:0;overflow:hidden;border-top:1px solid transparent;padding:0 19px;background:#fcfdff;opacity:0;transition:max-height .35s ease,opacity .25s ease,padding .35s ease,border-color .2s ease}.card.open>.content{max-height:470px;padding:16px 19px 19px;opacity:1;border-top-color:var(--line)}.desc{font-size:13px;color:#596576;margin-bottom:13px}
+.projectList{height:260px;overflow:auto;display:grid;gap:8px;padding-right:4px}.projectList::-webkit-scrollbar,.miniList::-webkit-scrollbar{width:6px}.projectList::-webkit-scrollbar-thumb,.miniList::-webkit-scrollbar-thumb{background:#cdd4de;border-radius:999px}.project{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 12px;border:1px solid #e4e8ee;border-radius:9px;background:#fff;transition:.16s}.project:hover{transform:translateX(3px);border-color:#cdd5df;background:#fafbfc}.pname{font-size:13px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pmeta{font-size:11px;color:#8b95a4;margin-top:2px}.parrow{color:#98a2b3}
+.techGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tech{border:1px solid #e4e8ee;border-radius:10px;overflow:hidden;background:#fff}.techBtn{width:100%;border:0;background:#fff;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--ink);cursor:pointer}.techArrow{transition:.2s}.tech.open .techArrow{transform:rotate(90deg)}.techBody{max-height:0;overflow:hidden;border-top:1px solid transparent;padding:0 11px;background:#fcfdff;opacity:0;transition:max-height .28s ease,opacity .2s ease,padding .28s ease}.tech.open .techBody{max-height:230px;padding:11px;opacity:1;border-top-color:#edf0f3}.miniList{height:170px;overflow:auto;display:grid;gap:7px;padding-right:3px}.mini{padding:9px 10px;border:1px solid #e6eaf0;border-radius:8px;background:#fff;color:#536072;font-size:12px}
+.infoGrid{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.infoCard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:21px;box-shadow:var(--shadow)}.infoCard h3{font-size:18px;margin-bottom:7px}.infoCard p{font-size:13px;color:#647083}.points{margin-top:13px;display:grid;gap:8px}.point{display:flex;gap:8px;color:#536072;font-size:12px}.point:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:7px;flex:0 0 auto}
+footer{background:#111827;color:#a0acbc;text-align:center;padding:28px 20px;font-size:12px}footer strong{color:#fff}
+@media(max-width:900px){.heroInner,.grid,.infoGrid{grid-template-columns:1fr}.heroPanel{max-width:520px}.techGrid{grid-template-columns:1fr}}
+@media(max-width:640px){.topnav{align-items:flex-start;flex-wrap:wrap}.navlinks{width:100%;overflow:auto;flex-wrap:nowrap;padding-bottom:2px}.hero{padding:56px 5% 48px}.hero h1{font-size:38px}main{padding-top:40px}.catBtn{grid-template-columns:48px 1fr 28px}.catIcon{width:48px;height:48px}.projectList{height:230px}}
+
+/* =====================================================
+   LAST VISITED PROJECTS — NAVBAR HOVER
+===================================================== */
+
+.recent-project-hover{
+  position:fixed;
+  top:10px;
+  left:50%;
+  z-index:1600;
+
+  width:max-content;
+  max-width:min(380px,calc(100vw - 24px));
+
+  transform:translateX(-50%);
+
+  color:#e8edf2;
+
+  font-size:11px;
+  font-weight:700;
+
+  pointer-events:auto;
+}
+
+.recent-project-latest{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+
+  min-height:31px;
+
+  padding:6px 9px;
+
+  background:#2f3439;
+
+  border:1px solid rgba(255,255,255,.11);
+
+  border-radius:8px;
+
+  box-shadow:
+    0 7px 18px rgba(0,0,0,.20);
+
+  cursor:pointer;
+
+  animation:recentLatestBlink 1.8s ease-in-out infinite;
+}
+
+.recent-project-label{
+  color:#aeb7c1;
+  font-weight:700;
+}
+
+.recent-project-latest-name{
+  max-width:190px;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.recent-project-latest-time{
+  min-width:29px;
+
+  text-align:right;
+
+  color:#efc27d;
+
+  font-variant-numeric:tabular-nums;
+}
+
+.recent-project-arrow{
+  color:#efc27d;
+  font-size:12px;
+}
+
+@keyframes recentLatestBlink{
+
+  0%,100%{
+    box-shadow:
+      0 7px 18px rgba(0,0,0,.20),
+      0 0 0 0 rgba(224,177,113,0);
+  }
+
+  50%{
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.24),
+      0 0 0 4px rgba(224,177,113,.07);
+  }
+
+}
+
+.recent-project-expanded{
+
+  margin-top:4px;
+
+  max-height:0;
+
+  overflow:hidden;
+
+  opacity:0;
+
+  transform:translateY(-4px);
+
+  pointer-events:none;
+
+  transition:
+    max-height .28s ease,
+    opacity .20s ease,
+    transform .28s ease;
+}
+
+.recent-project-hover:hover
+.recent-project-expanded{
+
+  max-height:225px;
+
+  opacity:1;
+
+  transform:translateY(0);
+
+  pointer-events:auto;
+}
+
+.recent-project-expanded-title{
+
+  padding:6px 9px;
+
+  color:#aeb7c1;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  text-transform:uppercase;
+
+  letter-spacing:.45px;
+
+  background:#2f3439;
+
+  border:1px solid rgba(255,255,255,.10);
+
+  border-bottom:0;
+
+  border-radius:8px 8px 0 0;
+}
+
+.recent-project-list{
+
+  max-height:188px;
+
+  overflow-y:auto;
+
+  padding:3px;
+
+  background:#2f3439;
+
+  border:1px solid rgba(255,255,255,.10);
+
+  border-top:0;
+
+  border-radius:0 0 8px 8px;
+
+  box-shadow:
+    0 12px 25px rgba(0,0,0,.24);
+}
+
+.recent-project-list::-webkit-scrollbar{
+  width:5px;
+}
+
+.recent-project-list::-webkit-scrollbar-thumb{
+  background:#6d747b;
+  border-radius:999px;
+}
+
+.recent-project-item{
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:8px;
+
+  width:100%;
+
+  padding:7px 8px;
+
+  border-radius:6px;
+
+  color:#e9edf1;
+
+  text-decoration:none;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  transition:
+    background .16s ease,
+    transform .16s ease;
+}
+
+.recent-project-item:hover{
+  background:rgba(255,255,255,.06);
+  transform:translateX(2px);
+}
+
+.recent-project-left{
+  min-width:0;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+}
+
+.recent-project-number{
+
+  width:17px;
+  height:17px;
+  min-width:17px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.08);
+
+  color:#c8d0d8;
+
+  font-size:8px;
+
+  font-weight:800;
+}
+
+.recent-project-name{
+
+  min-width:0;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+}
+
+.recent-project-time{
+
+  min-width:28px;
+
+  text-align:right;
+
+  color:#efc27d;
+
+  font-variant-numeric:tabular-nums;
+
+  font-size:9px;
+}
+
+@media(max-width:640px){
+
+  .recent-project-hover{
+
+    top:9px;
+
+    max-width:
+      calc(100vw - 20px);
+  }
+
+  .recent-project-latest-name{
+
+    max-width:125px;
+  }
+
+}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*/
+/* Direct colorful SVG icons */
+/* Official technology icons */
+.catIcon{
+  font-size:30px;
+}
+
+.catIcon .tool-icon{
+  font-size:30px;
+  line-height:1;
+  display:block;
+}
+
+/* Keep the icons visually centered inside the existing boxes */
+.catIcon i{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.custom-brand {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.custom-brand-logo {
+    width: 280px;
+    height: 42px;
+    display: block;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS
+   LEFT -> RIGHT / RIGHT -> LEFT EXPANSION
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.grid{
+  position:relative;
+  align-items:start;
+  grid-auto-flow: dense; /* FIX: PULLS LOWER CARDS UP INTO THE GAP */
+}
+
+
+/*
+   Expanded card occupies the complete row.
+
+   This is the important part:
+   the card itself expands across the row, but its
+   content order changes according to the side.
+*/
+.grid > .card.open{
+
+  grid-column:1 / -1;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(300px,.82fr)
+    minmax(430px,1.18fr);
+
+  min-height:330px;
+
+  position:relative;
+  z-index:30;
+
+  overflow:hidden;
+
+  border-radius:20px;
+
+  box-shadow:
+    0 20px 46px rgba(24,32,42,.12),
+    0 0 0 1px rgba(183,131,61,.08);
+
+  animation:
+    smoothExpand
+    .75s
+    cubic-bezier(.22, 1, .36, 1)
+    both;
+}
+
+
+/* -----------------------------------------------------
+   LEFT-SIDE CARD
+   Topic stays LEFT
+   Project list opens RIGHT
+----------------------------------------------------- */
+
+.grid > .card.open-left > .catBtn{
+
+  grid-column:1;
+  grid-row:1;
+
+  min-height:330px;
+
+  border-right:1px solid var(--line);
+  border-left:0;
+
+  order:1;
+}
+
+.grid > .card.open-left > .content{
+
+  grid-column:2;
+  grid-row:1;
+
+  order:2;
+
+  border:0;
+
+  animation:
+    projectFromRight
+    .65s
+    cubic-bezier(.22, 1, .36, 1)
+    .05s
+    both;
+}
+
+
+/* -----------------------------------------------------
+   RIGHT-SIDE CARD
+   Topic stays RIGHT
+   Project list opens LEFT
+----------------------------------------------------- */
+
+.grid > .card.open-right > .content{
+
+  grid-column:1;
+  grid-row:1;
+
+  order:1;
+
+  border:0;
+
+  animation:
+    projectFromLeft
+    .65s
+    cubic-bezier(.22, 1, .36, 1)
+    .05s
+    both;
+}
+
+.grid > .card.open-right > .catBtn{
+
+  grid-column:2;
+  grid-row:1;
+
+  min-height:330px;
+
+  border-left:1px solid var(--line);
+  border-right:0;
+
+  order:2;
+
+  justify-self:stretch;
+}
+
+
+/* -----------------------------------------------------
+   Smooth water-like opening
+----------------------------------------------------- */
+
+@keyframes smoothExpand{
+
+  0%{
+
+    opacity:.84;
+
+    transform:
+      translateY(7px)
+      scale(.975);
+
+  }
+
+  55%{
+
+    opacity:1;
+
+    transform:
+      translateY(-1px)
+      scale(1.008);
+
+  }
+
+  100%{
+
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* Soft ripple */
+.grid > .card.open::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,.26),
+      rgba(255,255,255,0) 48%
+    );
+
+  opacity:0;
+
+  transform:scale(.78);
+
+  animation:
+    waterRipple
+    .85s
+    ease-out
+    .02s
+    forwards;
+
+  pointer-events:none;
+
+  z-index:20;
+}
+
+@keyframes waterRipple{
+
+  0%{
+
+    opacity:.42;
+
+    transform:scale(.78);
+
+  }
+
+  55%{
+
+    opacity:.15;
+
+    transform:scale(1.03);
+
+  }
+
+  100%{
+
+    opacity:0;
+
+    transform:scale(1.12);
+
+  }
+
+}
+
+
+/* Soft light sweep */
+.grid > .card.open::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:-30%;
+  left:-18%;
+
+  width:21%;
+  height:160%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.45),
+      transparent
+    );
+
+  filter:blur(8px);
+
+  transform:
+    skewX(-12deg)
+    translateX(-180%);
+
+  animation:
+    lightSweep
+    1s
+    ease
+    .04s
+    forwards;
+
+  pointer-events:none;
+
+  z-index:25;
+}
+
+@keyframes lightSweep{
+
+  to{
+
+    transform:
+      skewX(-12deg)
+      translateX(620%);
+
+  }
+
+}
+
+
+/* -----------------------------------------------------
+   Category side
+----------------------------------------------------- */
+
+.grid > .card.open > .catBtn{
+
+  position:relative;
+
+  align-self:stretch;
+
+  padding:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf4 0%,
+      #ffffff 72%
+    );
+
+  overflow:hidden;
+
+}
+
+
+/* Small sweep on category side */
+.grid > .card.open > .catBtn::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:-35%;
+  left:-30%;
+
+  width:28%;
+  height:170%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.50),
+      transparent
+    );
+
+  filter:blur(8px);
+
+  transform:
+    skewX(-12deg)
+    translateX(-160%);
+
+  animation:
+    categorySweep
+    1s
+    ease
+    .06s
+    forwards;
+
+  pointer-events:none;
+
+}
+
+@keyframes categorySweep{
+
+  to{
+
+    transform:
+      skewX(-12deg)
+      translateX(520%);
+
+  }
+
+}
+
+
+/* Arrow direction */
+.grid > .card.open-left .catArrow{
+  transform:rotate(0deg);
+
+  background:var(--accentSoft);
+
+  color:#a56f19;
+
+  box-shadow:
+    0 0 0 4px rgba(183,131,61,.07);
+}
+
+.grid > .card.open-right .catArrow{
+  transform:rotate(180deg);
+
+  background:var(--accentSoft);
+
+  color:#a56f19;
+
+  box-shadow:
+    0 0 0 4px rgba(183,131,61,.07);
+}
+
+
+/* -----------------------------------------------------
+   Project panel
+----------------------------------------------------- */
+
+.grid > .card.open > .content{
+
+  min-width:0;
+
+  max-height:330px;
+
+  overflow:hidden;
+
+  padding:22px;
+
+  opacity:1;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fcfdff,
+      #f8fafc
+    );
+
+}
+
+
+/* LEFT card -> projects enter from RIGHT */
+@keyframes projectFromRight{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateX(28px)
+      scale(.985);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateX(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* RIGHT card -> projects enter from LEFT */
+@keyframes projectFromLeft{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateX(-28px)
+      scale(.985);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateX(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* -----------------------------------------------------
+   Fixed project window
+----------------------------------------------------- */
+
+.grid > .card.open > .content .projectList{
+
+  height:245px;
+
+  max-height:245px;
+
+  overflow-y:auto;
+
+  padding-right:7px;
+
+  scrollbar-width:thin;
+
+  scrollbar-color:
+    #bec7d2
+    transparent;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 91%,
+      transparent 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 91%,
+      transparent 100%
+    );
+
+}
+
+.grid > .card.open > .content .projectList::-webkit-scrollbar{
+
+  width:6px;
+
+}
+
+.grid > .card.open > .content .projectList::-webkit-scrollbar-thumb{
+
+  background:#bec7d2;
+
+  border-radius:999px;
+
+}
+
+
+/* -----------------------------------------------------
+   Project rows
+----------------------------------------------------- */
+
+.grid > .card.open-left > .content .project{
+
+  opacity:0;
+
+  transform:
+    translateX(18px);
+
+  animation:
+    rowFromRight
+    .45s
+    cubic-bezier(.22, 1, .36, 1)
+    forwards;
+
+}
+
+.grid > .card.open-right > .content .project{
+
+  opacity:0;
+
+  transform:
+    translateX(-18px);
+
+  animation:
+    rowFromLeft
+    .45s
+    cubic-bezier(.22, 1, .36, 1)
+    forwards;
+
+}
+
+
+.grid > .card.open > .content .project:nth-child(1){
+  animation-delay:.05s;
+}
+
+.grid > .card.open > .content .project:nth-child(2){
+  animation-delay:.09s;
+}
+
+.grid > .card.open > .content .project:nth-child(3){
+  animation-delay:.13s;
+}
+
+.grid > .card.open > .content .project:nth-child(4){
+  animation-delay:.17s;
+}
+
+.grid > .card.open > .content .project:nth-child(5){
+  animation-delay:.21s;
+}
+
+.grid > .card.open > .content .project:nth-child(6){
+  animation-delay:.25s;
+}
+
+.grid > .card.open > .content .project:nth-child(7){
+  animation-delay:.29s;
+}
+
+.grid > .card.open > .content .project:nth-child(8){
+  animation-delay:.33s;
+}
+
+.grid > .card.open > .content .project:nth-child(9){
+  animation-delay:.37s;
+}
+
+.grid > .card.open > .content .project:nth-child(10){
+  animation-delay:.41s;
+}
+
+
+@keyframes rowFromRight{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateX(18px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateX(0);
+
+  }
+
+}
+
+
+@keyframes rowFromLeft{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateX(-18px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateX(0);
+
+  }
+
+}
+
+
+/* -----------------------------------------------------
+   DevOps nested list remains scrollable
+----------------------------------------------------- */
+
+.grid > .card.open > .content .techGrid{
+
+  max-height:220px;
+
+  overflow-y:auto;
+
+  scrollbar-width:thin;
+
+  scrollbar-color:
+    #bec7d2
+    transparent;
+
+}
+
+
+/* -----------------------------------------------------
+   Mobile
+----------------------------------------------------- */
+
+@media(max-width:900px){
+
+  .grid > .card.open{
+
+    grid-column:1 / -1;
+
+    grid-template-columns:1fr;
+
+    min-height:auto;
+
+  }
+
+  .grid > .card.open-left > .catBtn,
+  .grid > .card.open-right > .catBtn{
+
+    grid-column:1;
+
+    grid-row:1;
+
+    order:1;
+
+    min-height:auto;
+
+    border-left:0;
+
+    border-right:0;
+
+    border-bottom:1px solid var(--line);
+
+  }
+
+  .grid > .card.open-left > .content,
+  .grid > .card.open-right > .content{
+
+    grid-column:1;
+
+    grid-row:2;
+
+    order:2;
+
+    max-height:330px;
+
+    padding:18px;
+
+  }
+
+}
+
+@media(max-width:640px){
+
+  .grid > .card.open > .content .projectList{
+
+    height:225px;
+
+    max-height:225px;
+
+  }
+
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS — FINAL SIDE ALIGNMENT
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* Left topic: topic on LEFT, list on RIGHT. */
+.grid > .card.open-left > .catBtn{
+  justify-self:stretch;
+  text-align:left;
+}
+
+/* Right topic: topic on RIGHT, list on LEFT. */
+.grid > .card.open-right > .catBtn{
+  justify-self:stretch;
+  text-align:left;
+}
+
+/* Keep the expanded project window flush to its side. */
+.grid > .card.open-left > .content{
+  border-left:0;
+}
+
+.grid > .card.open-right > .content{
+  border-right:0;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART — FINAL SIDE ALIGNMENT
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS
+   FINAL RHS EXPANSION — KEEP LOWER CARDS IN FLOW
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/*
+   IMPORTANT:
+   Do NOT use position:absolute here.
+   The expanded card stays a normal grid item, so all cards
+   below it are pushed down naturally.
+*/
+.grid > .card.open{
+  position:relative !important;
+
+  top:auto !important;
+  left:auto !important;
+
+  width:auto !important;
+
+  grid-column:1 / -1 !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(300px,.82fr)
+    minmax(430px,1.18fr) !important;
+
+  min-height:330px !important;
+
+  margin:0 !important;
+
+  overflow:hidden !important;
+
+  transform:none !important;
+
+  z-index:20 !important;
+
+  animation:
+    topicCardOpen
+    .75s
+    cubic-bezier(.22, 1, .36, 1)
+    both;
+}
+
+
+/* =====================================================
+   LHS — topic stays LEFT, projects RIGHT
+===================================================== */
+
+.grid > .card.open-left > .catBtn{
+  grid-column:1 !important;
+  grid-row:1 !important;
+
+  order:1 !important;
+
+  min-height:330px !important;
+
+  border-right:1px solid var(--line) !important;
+  border-left:0 !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    54px
+    1fr
+    30px !important;
+
+  align-items:center !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf4,
+      #ffffff 72%
+    ) !important;
+}
+
+.grid > .card.open-left > .content{
+  grid-column:2 !important;
+  grid-row:1 !important;
+
+  order:2 !important;
+
+  min-width:0 !important;
+
+  max-height:330px !important;
+
+  padding:22px !important;
+
+  overflow:hidden !important;
+
+  border:0 !important;
+
+  animation:
+    lhsPanelReveal
+    .65s
+    cubic-bezier(.22, 1, .36, 1)
+    .04s
+    both;
+}
+
+
+/* =====================================================
+   RHS — projects LEFT, topic RIGHT
+===================================================== */
+
+.grid > .card.open-right > .content{
+  grid-column:1 !important;
+  grid-row:1 !important;
+
+  order:1 !important;
+
+  min-width:0 !important;
+
+  max-height:330px !important;
+
+  padding:22px !important;
+
+  overflow:hidden !important;
+
+  border-right:1px solid var(--line) !important;
+  border-left:0 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fcfdff,
+      #f8fafc
+    ) !important;
+
+  animation:
+    rhsPanelReveal
+    .65s
+    cubic-bezier(.22, 1, .36, 1)
+    .04s
+    both;
+}
+
+.grid > .card.open-right > .catBtn{
+  grid-column:2 !important;
+  grid-row:1 !important;
+
+  order:2 !important;
+
+  min-height:330px !important;
+
+  display:grid !important;
+
+  /*
+     RIGHT CARD HEADER:
+     arrow LEFT | title CENTER | logo RIGHT
+  */
+  grid-template-columns:
+    34px
+    1fr
+    64px !important;
+
+  align-items:center !important;
+
+  text-align:left !important;
+
+  border-left:0 !important;
+  border-right:0 !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fffaf4
+    ) !important;
+}
+
+
+/* RHS arrow moves to LEFT */
+.grid > .card.open-right > .catBtn .catArrow{
+  grid-column:1 !important;
+  grid-row:1 !important;
+
+  justify-self:start !important;
+
+  transform:rotate(180deg) !important;
+
+  background:var(--accentSoft) !important;
+  color:#a56f19 !important;
+
+  box-shadow:
+    0 0 0 4px rgba(183,131,61,.07);
+}
+
+
+/* RHS title/subtitle remains in center */
+.grid > .card.open-right > .catBtn > div:nth-child(2){
+  grid-column:2 !important;
+  grid-row:1 !important;
+
+  min-width:0;
+}
+
+
+/* RHS logo moves to RIGHT */
+.grid > .card.open-right > .catBtn .catIcon{
+  grid-column:3 !important;
+  grid-row:1 !important;
+
+  justify-self:end !important;
+}
+
+
+/* =====================================================
+   SMOOTH RHS REVEAL
+===================================================== */
+
+@keyframes topicCardOpen{
+  0%{
+    opacity:.88;
+
+    transform:
+      translateY(7px)
+      scale(.985);
+  }
+
+  55%{
+    opacity:1;
+
+    transform:
+      translateY(-1px)
+      scale(1.006);
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* RHS project panel comes from LEFT */
+@keyframes rhsPanelReveal{
+  from{
+    opacity:0;
+
+    transform:
+      translateX(-26px)
+      scale(.985);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateX(0)
+      scale(1);
+  }
+}
+
+
+/* LHS project panel comes from RIGHT */
+@keyframes lhsPanelReveal{
+  from{
+    opacity:0;
+
+    transform:
+      translateX(26px)
+      scale(.985);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateX(0)
+      scale(1);
+  }
+}
+
+
+/* =====================================================
+   SOFT WATER / LIGHT EFFECT
+===================================================== */
+
+.grid > .card.open-right::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,.24),
+      rgba(255,255,255,0) 48%
+    );
+
+  opacity:0;
+
+  transform:scale(.88);
+
+  animation:
+    rhsWater
+    .85s
+    ease-out
+    .03s
+    forwards;
+
+  pointer-events:none;
+
+  z-index:15;
+}
+
+@keyframes rhsWater{
+  0%{
+    opacity:.35;
+    transform:scale(.88);
+  }
+
+  55%{
+    opacity:.12;
+    transform:scale(1.03);
+  }
+
+  100%{
+    opacity:0;
+    transform:scale(1.10);
+  }
+}
+
+
+/* =====================================================
+   PROJECT WINDOW + SCROLL
+===================================================== */
+
+.grid > .card.open > .content .projectList{
+  height:245px !important;
+  max-height:245px !important;
+
+  overflow-y:auto !important;
+
+  padding-right:7px !important;
+
+  scrollbar-width:thin;
+
+  scrollbar-color:
+    #bec7d2
+    transparent;
+}
+
+.grid > .card.open > .content .projectList::-webkit-scrollbar{
+  width:6px;
+}
+
+.grid > .card.open > .content .projectList::-webkit-scrollbar-thumb{
+  background:#bec7d2;
+  border-radius:999px;
+}
+
+
+/* RHS project rows enter from LEFT */
+.grid > .card.open-right > .content .project{
+  opacity:0;
+
+  transform:
+    translateX(-14px);
+
+  animation:
+    rhsRowReveal
+    .45s
+    cubic-bezier(.22, 1, .36, 1)
+    forwards;
+}
+
+@keyframes rhsRowReveal{
+  from{
+    opacity:0;
+    transform:translateX(-14px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+/* LHS rows enter from RIGHT */
+.grid > .card.open-left > .content .project{
+  opacity:0;
+
+  transform:
+    translateX(14px);
+
+  animation:
+    lhsRowReveal
+    .45s
+    cubic-bezier(.22, 1, .36, 1)
+    forwards;
+}
+
+@keyframes lhsRowReveal{
+  from{
+    opacity:0;
+    transform:translateX(14px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+
+/* Stagger rows */
+.grid > .card.open > .content .project:nth-child(1){animation-delay:.05s}
+.grid > .card.open > .content .project:nth-child(2){animation-delay:.08s}
+.grid > .card.open > .content .project:nth-child(3){animation-delay:.11s}
+.grid > .card.open > .content .project:nth-child(4){animation-delay:.14s}
+.grid > .card.open > .content .project:nth-child(5){animation-delay:.17s}
+.grid > .card.open > .content .project:nth-child(6){animation-delay:.20s}
+.grid > .card.open > .content .project:nth-child(7){animation-delay:.23s}
+.grid > .card.open > .content .project:nth-child(8){animation-delay:.26s}
+.grid > .card.open > .content .project:nth-child(9){animation-delay:.29s}
+.grid > .card.open > .content .project:nth-child(10){animation-delay:.32s}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+  .grid > .card.open{
+    position:relative !important;
+
+    top:auto !important;
+    left:auto !important;
+
+    width:100% !important;
+
+    grid-column:1 / -1 !important;
+
+    grid-template-columns:1fr !important;
+
+    min-height:auto !important;
+  }
+
+  .grid > .card.open-left > .catBtn,
+  .grid > .card.open-right > .catBtn{
+    grid-column:1 !important;
+    grid-row:1 !important;
+
+    order:1 !important;
+
+    min-height:auto !important;
+
+    border-left:0 !important;
+    border-right:0 !important;
+
+    border-bottom:1px solid var(--line) !important;
+
+    grid-template-columns:
+      54px
+      1fr
+      30px !important;
+  }
+
+  .grid > .card.open-right > .catBtn .catArrow{
+    grid-column:3 !important;
+  }
+
+  .grid > .card.open-right > .catBtn > div:nth-child(2){
+    grid-column:2 !important;
+  }
+
+  .grid > .card.open-right > .catBtn .catIcon{
+    grid-column:1 !important;
+  }
+
+  .grid > .card.open-left > .content,
+  .grid > .card.open-right > .content{
+    grid-column:1 !important;
+    grid-row:2 !important;
+
+    order:2 !important;
+
+    max-height:330px !important;
+  }
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   JS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   NO CHANGE REQUIRED.
+
+   The existing toggleCard() already adds:
+   .open-left for left-side cards
+   .open-right for right-side cards
+
+   The CSS above now controls the RHS animation and keeps the
+   expanded card in normal document flow so cards below it move down.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END JS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS
+   RHS GAP FIX ONLY
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/*
+   Keep the expanded RHS card in normal document flow so the next
+   cards continue below it, while the RHS content and topic panels
+   touch each other directly.
+*/
+.grid > .card.open-right{
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(460px,1fr)
+    minmax(320px,.74fr) !important;
+
+  column-gap:0 !important;
+
+  min-height:330px !important;
+
+  width:100% !important;
+
+  position:relative !important;
+
+  top:auto !important;
+  left:auto !important;
+
+  margin:0 !important;
+
+  transform:none !important;
+
+  overflow:hidden !important;
+}
+
+
+/*
+   Projects stay flush on the LEFT.
+   Remove every visual gap between project panel and topic panel.
+*/
+.grid > .card.open-right > .content{
+
+  grid-column:1 !important;
+  grid-row:1 !important;
+
+  width:100% !important;
+  min-width:0 !important;
+
+  margin:0 !important;
+
+  padding:22px !important;
+
+  border-right:1px solid var(--line) !important;
+  border-left:0 !important;
+
+  border-radius:0 !important;
+
+  transform:none !important;
+
+  overflow:hidden !important;
+}
+
+
+/*
+   Topic stays flush on the RIGHT.
+   No empty space between it and the project panel.
+*/
+.grid > .card.open-right > .catBtn{
+
+  grid-column:2 !important;
+  grid-row:1 !important;
+
+  width:100% !important;
+  min-width:0 !important;
+
+  margin:0 !important;
+
+  padding:24px !important;
+
+  border:0 !important;
+  border-left:0 !important;
+
+  border-radius:0 !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    30px
+    1fr
+    64px !important;
+
+  align-items:center !important;
+
+  text-align:left !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fffaf4
+    ) !important;
+}
+
+
+/*
+   RHS arrow on LEFT edge of the topic panel.
+*/
+.grid > .card.open-right > .catBtn .catArrow{
+
+  grid-column:1 !important;
+  grid-row:1 !important;
+
+  justify-self:start !important;
+
+  transform:rotate(180deg) !important;
+}
+
+
+/*
+   RHS title in the center.
+*/
+.grid > .card.open-right > .catBtn > div:nth-child(2){
+
+  grid-column:2 !important;
+  grid-row:1 !important;
+
+  min-width:0 !important;
+}
+
+
+/*
+   RHS official logo on the far RIGHT.
+*/
+.grid > .card.open-right > .catBtn .catIcon{
+
+  grid-column:3 !important;
+  grid-row:1 !important;
+
+  justify-self:end !important;
+}
+
+
+/*
+   Project list fills the complete left panel.
+   No horizontal gap inside the open RHS layout.
+*/
+.grid > .card.open-right > .content .projectList{
+
+  width:100% !important;
+
+  margin:0 !important;
+
+  height:245px !important;
+  max-height:245px !important;
+
+  overflow-y:auto !important;
+}
+
+
+/*
+   Make the reveal come directly from the left panel,
+   without a translating gap at the boundary.
+*/
+.grid > .card.open-right > .content{
+
+  animation:
+    rhsPanelFlushReveal
+    .65s
+    cubic-bezier(.22, 1, .36, 1)
+    .03s
+    both !important;
+}
+
+@keyframes rhsPanelFlushReveal{
+
+  from{
+    opacity:0;
+    transform:translateX(-14px) !important;
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0) !important;
+  }
+}
+
+
+/*
+   Keep the existing open animation smooth, but don't let
+   transforms create a visible gap after the animation.
+*/
+.grid > .card.open-right::before{
+  pointer-events:none;
+}
+
+.grid > .card.open-right::after{
+  pointer-events:none;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.card:nth-child(1) .catIcon{background:#fbf2e6;color:#a96d22;border-color:#ead8bf}
+.card:nth-child(2) .catIcon{background:#edf4f0;color:#4d7060;border-color:#d3e2da}
+.card:nth-child(3) .catIcon{background:#f5ecef;color:#805c66;border-color:#e5d5da}
+.card:nth-child(4) .catIcon{background:#eef2f5;color:#5a6c7c;border-color:#d7e0e7}
+.card:nth-child(5) .catIcon{background:#f5eee7;color:#8b6743;border-color:#e4d6c8}
+.card:nth-child(6) .catIcon{background:#eef4ee;color:#5d725e;border-color:#d8e3d8}
+.card:nth-child(7) .catIcon{background:#f2eef4;color:#765e7d;border-color:#dfd6e3}
+.card:nth-child(8) .catIcon{background:#edf1f5;color:#647485;border-color:#d8e0e7}
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ADD THIS PART TO CSS — ENHANCED CARD ANIMATIONS (HOVER & ENTRY)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* 1. Staggered Entry Animation on Page Load */
+.grid > .card {
+    opacity: 0;
+    animation: exploreCardEntry 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.grid > .card:nth-child(1) { animation-delay: 0.05s; }
+.grid > .card:nth-child(2) { animation-delay: 0.12s; }
+.grid > .card:nth-child(3) { animation-delay: 0.19s; }
+.grid > .card:nth-child(4) { animation-delay: 0.26s; }
+.grid > .card:nth-child(5) { animation-delay: 0.33s; }
+.grid > .card:nth-child(6) { animation-delay: 0.40s; }
+.grid > .card:nth-child(7) { animation-delay: 0.47s; }
+.grid > .card:nth-child(8) { animation-delay: 0.54s; }
+
+@keyframes exploreCardEntry {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 2. Premium Bouncier Hover State for Cards */
+.grid > .card {
+    /* Override old transition for a springier feel */
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.grid > .card:not(.open):hover {
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 24px 42px rgba(16,24,40,0.12), 0 8px 18px rgba(183,131,61,0.08) !important;
+    border-color: rgba(183,131,61,0.3) !important;
+    z-index: 10; 
+}
+
+/* 3. Icon & Arrow Micro-Interactions on Hover */
+.grid > .card .catIcon {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.grid > .card:not(.open):hover .catIcon {
+    transform: scale(1.15) rotate(-5deg) !important;
+}
+
+.grid > .card .catArrow {
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.grid > .card:not(.open):hover .catArrow {
+    transform: translateX(5px) !important;
+    background: var(--accentSoft) !important;
+    color: #a56f19 !important;
+    box-shadow: 0 0 0 4px rgba(183,131,61,0.07) !important;
+}
+
+/* 4. Interactive Hover for Individual Inner Project Items */
+.project {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.project:hover {
+    transform: translateX(6px) scale(1.01) !important;
+    background: #fdfefd !important; 
+    border-color: #c0c9d4 !important;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05) !important;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END CSS PART — ENHANCED CARD ANIMATIONS
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+<nav class="topnav">
+  <a href="index.html" class="brand">
+    <!-- <div class="brandmark">KJ</div>
+    <div class="brandtext">
+      <div class="brandname">Koustubh Juvekar</div>
+      <div class="brandsub">Cloud Engineer • Projects</div> -->
+      
+      <a class="custom-brand" href="index.html">
+        <img
+            src="images/logo.png"
+            alt="Koustubh Juvekar"
+            class="custom-brand-logo">
+      </a>
+  </a>
+  <div class="navlinks">
+    <a href="index.html" class="navbtn website">← www.koustubhjuvekar.in</a>
+  </div>
+
+
+
+
+</nav>
+<!-- =====================================================
+     LAST VISITED PROJECTS — NAVBAR HOVER CONTROL
+===================================================== -->
+
+<div
+    id="recentProjectHover"
+    class="recent-project-hover">
+
+    <div
+        id="recentProjectLatest"
+        class="recent-project-latest">
+
+        <span class="recent-project-label">
+            Last:
+        </span>
+
+        <span
+            id="recentProjectLatestName"
+            class="recent-project-latest-name">
+        </span>
+
+        <span
+            id="recentProjectLatestTime"
+            class="recent-project-latest-time">
+        </span>
+
+        <span class="recent-project-arrow">
+            →
+        </span>
+
+    </div>
+
+
+    <div
+        id="recentProjectExpanded"
+        class="recent-project-expanded">
+
+        <div class="recent-project-expanded-title">
+            Last visited projects
+        </div>
+
+        <div
+            id="recentProjectList"
+            class="recent-project-list">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<header class="hero">
+  <div class="heroInner">
+    <div>
+      <div class="eyebrow">Project Library</div>
+      <h1>My <span>Projects</span></h1>
+      <p>A structured collection of cloud, DevOps, automation, CI/CD and infrastructure projects. Select a technology to expand its project list.</p>
+    </div>
+    <div class="heroPanel">
+      <h3>Project categories</h3>
+      <div class="flow">
+        <div class="flowitem"><span class="flowdot"></span>Cloud & AWS</div>
+        <div class="flowitem"><span class="flowdot"></span>Containers & Orchestration</div>
+        <div class="flowitem"><span class="flowdot"></span>CI/CD & Source Control</div>
+        <div class="flowitem"><span class="flowdot"></span>Infrastructure as Code</div>
+        <div class="flowitem"><span class="flowdot"></span>Configuration Management</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="sectionHead">
+      <h2>Explore My Work</h2>
+      <p>Click a category to expand it. Longer lists stay inside a controlled scroll area.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- AWS -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="images/aws.svg" alt="AWS" class="tool-icon"></div>
+          <div><div class="catTitle">AWS Projects</div><span class="catSub">EC2 • VPC • S3 • IAM • Networking</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <p class="desc">Cloud infrastructure and AWS operations projects.</p>
+          <div class="projectList">
+            <a href="webserver.html" class="project" data-project-url="webserver.html"><div><div class="pname">01. Web Server Installation on AWS EC2</div><div class="pmeta">EC2 • Apache • Security Group • HTTP</div></div><span class="parrow">→</span></a>
+            <a href="3tier.html" class="project" data-project-url="#"><div><div class="pname">02. Three-Tier VPC Architecture</div><div class="pmeta">VPC • Public/Private Subnets • Routing</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">03. EC2 Auto Scaling Setup</div><div class="pmeta">EC2 • Auto Scaling • High Availability</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">04. Application Load Balancer</div><div class="pmeta">ALB • Target Groups • Health Checks</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">05. S3 Static Website Hosting</div><div class="pmeta">S3 • Static Hosting • Bucket Policy</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">06. Route 53 DNS Configuration</div><div class="pmeta">Route 53 • DNS • Domain Routing</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">07. IAM Users and Roles</div><div class="pmeta">IAM • Policies • Roles</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">08. CloudWatch Monitoring</div><div class="pmeta">Metrics • Logs • Alarms</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">09. Lambda Serverless Application</div><div class="pmeta">Lambda • Events • Serverless Workflow</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">10. RDS PostgreSQL Deployment</div><div class="pmeta">RDS • PostgreSQL • Security Groups</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- DEVOPS -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" class="tool-icon"></div>
+          <div><div class="catTitle">DevOps Projects</div><span class="catSub">Containers • Orchestration • CI/CD</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <p class="desc">Select a technology to open its focused project list.</p>
+          <div class="techGrid">
+
+            <div class="tech">
+              <button class="techBtn" onclick="toggleTech(this)"><span>Docker</span><span class="techArrow">→</span></button>
+              <div class="techBody"><div class="miniList">
+                <div class="mini">Dockerized Node.js Application</div>
+                <div class="mini">Multi-Container Application with Docker Compose</div>
+                <div class="mini">Custom Docker Image and Registry</div>
+                <div class="mini">Docker Networking and Volumes</div>
+                <div class="mini">Dockerized React + API Application</div>
+                <div class="mini">Docker Health Checks and Environment Variables</div>
+              </div></div>
+            </div>
+
+            <div class="tech">
+              <button class="techBtn" onclick="toggleTech(this)"><span>Kubernetes</span><span class="techArrow">→</span></button>
+              <div class="techBody"><div class="miniList">
+                <div class="mini">Kubernetes Deployment and Service</div>
+                <div class="mini">ConfigMap and Secret Management</div>
+                <div class="mini">Kubernetes Ingress Configuration</div>
+                <div class="mini">Horizontal Pod Autoscaling</div>
+                <div class="mini">Kubernetes Rolling Deployment</div>
+                <div class="mini">EKS Application Deployment</div>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- JENKINS -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt="Jenkins" class="tool-icon"></div>
+          <div><div class="catTitle">Jenkins</div><span class="catSub">CI/CD • Pipelines • Deployment</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Jenkins Freestyle Project</div><div class="pmeta">Build • Test • Deploy</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Jenkins Pipeline Project</div><div class="pmeta">Pipeline • Stages • Artifacts</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Jenkins + Docker CI/CD</div><div class="pmeta">Build Image • Push • Deploy</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Jenkins + Kubernetes Deployment</div><div class="pmeta">CI/CD • Kubernetes • Rolling Update</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- GIT/GITHUB -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="tool-icon"></div>
+          <div><div class="catTitle">Git / GitHub</div><span class="catSub">Source Control • Branching • Collaboration</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Git Workflow and Branching</div><div class="pmeta">Branch • Merge • Rebase</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">GitHub Repository Management</div><div class="pmeta">Repository • Remote • Pull</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Pull Request Workflow</div><div class="pmeta">PR • Review • Merge</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- TERRAFORM -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg" alt="Terraform" class="tool-icon"></div>
+          <div><div class="catTitle">Terraform</div><span class="catSub">Infrastructure as Code • AWS Provisioning</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">AWS EC2 with Terraform</div><div class="pmeta">Resource • Variable • Output</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Terraform VPC Deployment</div><div class="pmeta">VPC • Subnet • Route Table</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Terraform Modules</div><div class="pmeta">Reusable Infrastructure</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- GITLAB -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" alt="GitLab" class="tool-icon"></div>
+          <div><div class="catTitle">GitLab</div><span class="catSub">Repositories • CI/CD • Runners</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">GitLab CI/CD Pipeline</div><div class="pmeta">Stages • Jobs • Artifacts</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">GitLab Runner Setup</div><div class="pmeta">Runner • Build • Deploy</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- BITBUCKET -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg" alt="Bitbucket" class="tool-icon"></div>
+          <div><div class="catTitle">Bitbucket</div><span class="catSub">Git Workflows • Pipelines</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Bitbucket Repository Workflow</div><div class="pmeta">Branch • Pull Request • Merge</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Bitbucket Pipeline</div><div class="pmeta">Build • Test • Deploy</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ANSIBLE -->
+      <article class="card">
+        <button class="catBtn" onclick="toggleCard(this)">
+          <div class="catIcon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg" alt="Ansible" class="tool-icon"></div>
+          <div><div class="catTitle">Ansible</div><span class="catSub">Configuration Management • Automation</span></div>
+          <span class="catArrow">→</span>
+        </button>
+        <div class="content">
+          <div class="projectList">
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Apache Installation with Ansible</div><div class="pmeta">Playbook • Package • Service</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Linux Server Configuration</div><div class="pmeta">Users • Packages • Files</div></div><span class="parrow">→</span></a>
+            <a href="#" class="project" data-project-url="#"><div><div class="pname">Application Deployment with Ansible</div><div class="pmeta">Roles • Templates • Handlers</div></div><span class="parrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="infoGrid">
+    <div class="infoCard">
+      <h3>How the project library works</h3>
+      <p>Each technology card expands independently while longer lists stay inside a compact scroll window.</p>
+      <div class="points">
+        <div class="point">AWS shows a longer test list with internal scrolling.</div>
+        <div class="point">DevOps expands into Docker and Kubernetes.</div>
+        <div class="point">Every technology can later point to its own HTML project page.</div>
+      </div>
+    </div>
+    <div class="infoCard">
+      <h3>Portfolio navigation</h3>
+      <p>The top bar gives visitors quick ways to return to the main portfolio or previous page.</p>
+      <div class="points">
+        <div class="point">Back returns to the previous page.</div>
+        <div class="point">Home returns to the main portfolio.</div>
+        <div class="point">My Projects keeps the current project library open.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Koustubh Juvekar</strong> · Cloud Engineer Project Library<br>
+  AWS • DevOps • CI/CD • Infrastructure as Code
+</footer>
+
+<script>
+function toggleCard(btn){
+
+  const card =
+    btn.closest('.card');
+
+  const wasOpen =
+    card.classList.contains('open');
+
+  document
+    .querySelectorAll('.grid > .card.open')
+    .forEach(function(item){
+
+      item.classList.remove(
+        'open',
+        'open-left',
+        'open-right'
+      );
+
+    });
+
+
+  if(wasOpen){
+    return;
+  }
+
+
+  /*
+     Detect the actual visual side of the card.
+
+     LEFT card  -> project list opens on RIGHT.
+     RIGHT card -> project list opens on LEFT.
+
+     Using its position instead of nth-child keeps this
+     correct even when cards are reordered or resized.
+  */
+  const grid =
+    card.closest('.grid');
+
+  const cardRect =
+    card.getBoundingClientRect();
+
+  const gridRect =
+    grid.getBoundingClientRect();
+
+  const cardCenter =
+    cardRect.left +
+    (cardRect.width / 2);
+
+  const gridCenter =
+    gridRect.left +
+    (gridRect.width / 2);
+
+
+  card.classList.add('open');
+
+  if(cardCenter < gridCenter){
+
+    card.classList.add(
+      'open-left'
+    );
+
+  }else{
+
+    card.classList.add(
+      'open-right'
+    );
+
+  }
+
+
+  /*
+     Keep the expanded row comfortably in view.
+  */
+  setTimeout(function(){
+
+    const rect =
+      card.getBoundingClientRect();
+
+    if(
+      rect.top < 88 ||
+      rect.bottom > window.innerHeight
+    ){
+
+      card.scrollIntoView({
+        behavior:'smooth',
+        block:'nearest'
+      });
+
+    }
+
+  },220);
+
+}
+
+function toggleTech(btn){
+  const tech=btn.closest('.tech');
+  const group=tech.parentElement;
+  group.querySelectorAll('.tech.open').forEach(t=>{if(t!==tech)t.classList.remove('open')});
+  tech.classList.toggle('open');
+}
+
+/* Last opened project memory */
+document.querySelectorAll('.project').forEach(function(link){
+  link.addEventListener('click', function(){
+    const url=this.getAttribute('href');
+    const nameEl=this.querySelector('.pname');
+    const name=nameEl ? nameEl.textContent.trim() : 'Project';
+    if(url && url !== '#'){
+      localStorage.setItem('lastProjectUrl', url);
+      localStorage.setItem('lastProjectName', name);
+      localStorage.setItem('lastProjectTime', Date.now().toString());
+    }
+  });
+});
+
+/* Show the last opened project for 20 seconds */
+(function(){
+  const box=document.getElementById('lastProjectHighlight');
+  const name=document.getElementById('lastProjectName');
+  if(!box || !name) return;
+
+  const url=localStorage.getItem('lastProjectUrl');
+  const projectName=localStorage.getItem('lastProjectName');
+  if(!url || !projectName) return;
+
+  box.href=url;
+  name.textContent=projectName;
+
+  requestAnimationFrame(function(){
+    box.classList.add('show');
+  });
+
+  setTimeout(function(){
+    box.classList.remove('show');
+  }, 20000);
+})();
+</script>
+
+<script>
+/* =========================================================
+   LAST VISITED PROJECTS — NAVBAR HOVER
+
+   - Latest project shown in compact form.
+   - Hover expands to last 5 active projects.
+   - Each project is active for 60 seconds.
+   - If a project is opened from this list and the user
+     returns to My Projects, that selected project's
+     60-second timer starts fresh.
+========================================================= */
+
+(function(){
+
+    const HISTORY_KEY =
+        "kj_recent_projects_nav_v2";
+
+    const RESET_KEY =
+        "kj_recent_project_reset_on_return_v2";
+
+    const ACTIVE_TIME =
+        60 * 1000;
+
+    const MAX_PROJECTS =
+        5;
+
+
+    const latestBox =
+        document.getElementById(
+            "recentProjectLatest"
+        );
+
+    const latestName =
+        document.getElementById(
+            "recentProjectLatestName"
+        );
+
+    const latestTime =
+        document.getElementById(
+            "recentProjectLatestTime"
+        );
+
+    const list =
+        document.getElementById(
+            "recentProjectList"
+        );
+
+
+    if(
+        !latestBox ||
+        !latestName ||
+        !latestTime ||
+        !list
+    ){
+        return;
+    }
+
+
+    function readHistory(){
+
+        try{
+
+            const data =
+                JSON.parse(
+                    localStorage.getItem(
+                        HISTORY_KEY
+                    )
+                );
+
+            return Array.isArray(data)
+                ? data
+                : [];
+
+        }catch(error){
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveHistory(items){
+
+        localStorage.setItem(
+            HISTORY_KEY,
+            JSON.stringify(items)
+        );
+
+    }
+
+
+    function cleanHistory(items){
+
+        const now =
+            Date.now();
+
+        return items.filter(
+            function(item){
+
+                return (
+                    item &&
+                    item.url &&
+                    item.name &&
+                    item.expiresAt > now
+                );
+
+            }
+        );
+
+    }
+
+
+    /*
+       When returning to My Projects after opening
+       a project from the recent-project popup, reset
+       that selected project's 60-second lifetime.
+    */
+    function resetSelectedProjectOnReturn(){
+
+        const resetUrl =
+            localStorage.getItem(
+                RESET_KEY
+            );
+
+        if(!resetUrl){
+            return;
+        }
+
+
+        let items =
+            cleanHistory(
+                readHistory()
+            );
+
+
+        const index =
+            items.findIndex(
+                function(item){
+
+                    return (
+                        item.url ===
+                        resetUrl
+                    );
+
+                }
+            );
+
+
+        if(index !== -1){
+
+            const selected =
+                items[index];
+
+            selected.expiresAt =
+                Date.now() +
+                ACTIVE_TIME;
+
+
+            /*
+               Make the project that was reopened
+               the new latest project.
+            */
+            items.splice(
+                index,
+                1
+            );
+
+            items.unshift(
+                selected
+            );
+
+            items =
+                items.slice(
+                    0,
+                    MAX_PROJECTS
+                );
+
+            saveHistory(
+                items
+            );
+
+        }
+
+
+        localStorage.removeItem(
+            RESET_KEY
+        );
+
+    }
+
+
+    /*
+       pageshow also works when the browser restores
+       this page from its back-forward cache.
+    */
+    window.addEventListener(
+        "pageshow",
+        function(){
+
+            resetSelectedProjectOnReturn();
+
+            render();
+
+        }
+    );
+
+
+    function render(){
+
+        let items =
+            cleanHistory(
+                readHistory()
+            );
+
+
+        items =
+            items.slice(
+                0,
+                MAX_PROJECTS
+            );
+
+
+        saveHistory(
+            items
+        );
+
+
+        if(!items.length){
+
+            latestBox.style.display =
+                "none";
+
+            list.innerHTML =
+                "";
+
+            return;
+
+        }
+
+
+        latestBox.style.display =
+            "flex";
+
+
+        const latest =
+            items[0];
+
+
+        const latestRemaining =
+            Math.max(
+                0,
+                Math.ceil(
+                    (
+                        latest.expiresAt -
+                        Date.now()
+                    ) / 1000
+                )
+            );
+
+
+        latestName.textContent =
+            latest.name;
+
+
+        latestTime.textContent =
+            latestRemaining + "s";
+
+
+        /*
+           Latest project itself is clickable.
+           Set reset flag before navigating.
+        */
+        latestBox.onclick =
+            function(){
+
+                localStorage.setItem(
+                    RESET_KEY,
+                    latest.url
+                );
+
+                window.location.href =
+                    latest.url;
+
+            };
+
+
+        list.innerHTML =
+            "";
+
+
+        items.forEach(
+            function(item,index){
+
+                const remaining =
+                    Math.max(
+                        0,
+                        Math.ceil(
+                            (
+                                item.expiresAt -
+                                Date.now()
+                            ) / 1000
+                        )
+                    );
+
+
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                link.className =
+                    "recent-project-item";
+
+
+                link.href =
+                    item.url;
+
+
+                link.addEventListener(
+                    "click",
+                    function(){
+
+                        /*
+                           Tell My Projects to
+                           refresh this project's timer
+                           after returning.
+                        */
+                        localStorage.setItem(
+                            RESET_KEY,
+                            item.url
+                        );
+
+                    }
+                );
+
+
+                const left =
+                    document.createElement(
+                        "span"
+                    );
+
+                left.className =
+                    "recent-project-left";
+
+
+                const number =
+                    document.createElement(
+                        "span"
+                    );
+
+                number.className =
+                    "recent-project-number";
+
+                number.textContent =
+                    index + 1;
+
+
+                const name =
+                    document.createElement(
+                        "span"
+                    );
+
+                name.className =
+                    "recent-project-name";
+
+                name.textContent =
+                    item.name;
+
+
+                const time =
+                    document.createElement(
+                        "span"
+                    );
+
+                time.className =
+                    "recent-project-time";
+
+                time.textContent =
+                    remaining + "s";
+
+
+                left.appendChild(
+                    number
+                );
+
+                left.appendChild(
+                    name
+                );
+
+
+                link.appendChild(
+                    left
+                );
+
+                link.appendChild(
+                    time
+                );
+
+
+                list.appendChild(
+                    link
+                );
+
+            }
+        );
+
+    }
+
+
+    /*
+       Register real project visits.
+       Existing hrefs remain untouched.
+    */
+    document
+        .querySelectorAll(
+            "a.project"
+        )
+        .forEach(
+            function(link){
+
+                link.addEventListener(
+                    "click",
+                    function(){
+
+                        const url =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        if(
+                            !url ||
+                            url === "#"
+                        ){
+                            return;
+                        }
+
+
+                        const title =
+                            this.querySelector(
+                                ".pname"
+                            );
+
+
+                        const name =
+                            title
+                              ? title.textContent.trim()
+                              : "Project";
+
+
+                        let items =
+                            cleanHistory(
+                                readHistory()
+                            );
+
+
+                        /*
+                           Remove same project,
+                           then place it first.
+                        */
+                        items =
+                            items.filter(
+                                function(item){
+
+                                    return (
+                                        item.url !==
+                                        url
+                                    );
+
+                                }
+                            );
+
+
+                        items.unshift({
+
+                            name:
+                                name,
+
+                            url:
+                                url,
+
+                            expiresAt:
+                                Date.now() +
+                                ACTIVE_TIME
+
+                        });
+
+
+                        items =
+                            items.slice(
+                                0,
+                                MAX_PROJECTS
+                            );
+
+
+                        saveHistory(
+                            items
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /*
+       Handle normal initial load too.
+    */
+    resetSelectedProjectOnReturn();
+
+    render();
+
+
+    /*
+       Update the remaining seconds and
+       automatically remove expired projects.
+    */
+    setInterval(
+        render,
+        1000
+    );
+
+})();
+</script>
+
+
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   JS PART — NO CHANGE REQUIRED
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The existing JavaScript stays exactly as it is.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END JS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   JS PART — NO CHANGE REQUIRED
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The existing toggleCard() logic already detects whether the topic card
+is on the left or right. Only the CSS arrow/alignment was corrected.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   END JS PART
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated 3-Tier Architecture</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* --- Animated Gradient Background --- */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Navbar --- */
+        header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #00f2fe;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Main Content & Hero --- */
+        main {
+            margin-top: 120px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 50px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* --- Architecture Grid (Glassmorphism Cards) --- */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        .tier-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s forwards;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Delay card animations for a cascade effect */
+        .tier-card:nth-child(1) { animation-delay: 0.2s; }
+        .tier-card:nth-child(2) { animation-delay: 0.4s; }
+        .tier-card:nth-child(3) { animation-delay: 0.6s; }
+
+        /* Card Hover Animations */
+        .tier-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
+        }
+
+        .icon-wrapper {
+            font-size: 50px;
+            color: #00f2fe;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        /* Icon bounce on hover */
+        .tier-card:hover .icon-wrapper {
+            transform: rotateY(360deg) scale(1.2);
+            color: #4facfe;
+            text-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
+        }
+
+        .tier-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .tier-card p:last-child {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Floating Particles Background (Decorative) --- */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,242,254,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 { top: 10%; left: 5%; width: 300px; height: 300px; animation-delay: 0s; }
+        .circle-2 { bottom: 10%; right: 5%; width: 400px; height: 400px; animation-delay: 2s; }
+        .circle-3 { top: 40%; left: 50%; width: 250px; height: 250px; animation-delay: 4s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h1 { font-size: 2.5rem; }
+            main { margin-top: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+
+    <header>
+        <div class="logo">SysArch</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Architecture</a>
+            <a href="#">Documentation</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>3-Tier Architecture</h1>
+            <p>Experience the modern, scalable, and beautifully designed application layers.</p>
+        </div>
+
+        <div class="tier-grid">
+            <!-- Tier 1: Presentation -->
+            <div class="tier-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Presentation</h3>
+                <div class="tag">Frontend Layer</div>
+                <p>The visually stunning user interface built with HTML, CSS, and JS. It provides a seamless and interactive experience for the users.</p>
+            </div>
+
+            <!-- Tier 2: Application -->
+            <div class="tier-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-server"></i></div>
+                <h3>Application</h3>
+                <div class="tag">Logic Layer</div>
+                <p>The brain of the system. APIs and backend code built in Node.js/Python that process user inputs, apply business rules, and route data.</p>
+            </div>
+
+            <!-- Tier 3: Data -->
+            <div class="tier-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-database"></i></div>
+                <h3>Database</h3>
+                <div class="tag">Data Layer</div>
+                <p>The secure vault. A robust relational or NoSQL database ensuring data integrity, optimized queries, and safe storage.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
