@@ -1,0 +1,6 @@
+{
+  "name": "Hisaab Pro - Expense Manager & Split Bill Portal",
+  "description": "Smart expense and split bill dashboard with multi-account wallet management, Dream payments, Udhaar book, admin auth, user registration, and REST API backend.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

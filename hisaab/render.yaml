@@ -1,0 +1,26 @@
+# =====================================================================
+# Render.com Free Web Service Blueprint (render.yaml)
+# Deploy your Hisaab Pro website 100% free with continuous deployment!
+# =====================================================================
+services:
+  - type: web
+    name: hisaab-pro-portal
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DEFAULT_ADMIN_USERNAME
+        value: admin0987654321
+      - key: DEFAULT_ADMIN_PASSWORD
+        value: admin0987654321
+      - key: DATABASE_TYPE
+        value: json
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OTP_MODE
+        value: free_simulation
